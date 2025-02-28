@@ -1,14 +1,20 @@
+import relumePreset from '@relume_io/relume-tailwind'
+
 import tailwindcssAnimate from 'tailwindcss-animate'
 import typography from '@tailwindcss/typography'
 
 /** @type {import('tailwindcss').Config} */
 const config = {
   content: [
+    './node_modules/@relume_io/relume-ui/dist/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './payload.config.ts',
   ],
+  presets: [relumePreset],
   darkMode: ['selector', '[data-theme="dark"]'],
   plugins: [tailwindcssAnimate, typography],
   prefix: '',

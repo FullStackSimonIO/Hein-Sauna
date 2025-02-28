@@ -16,28 +16,80 @@ export const hero: Field = {
     {
       name: 'type',
       type: 'select',
-      defaultValue: 'lowImpact',
-      label: 'Type',
+      defaultValue: 'none',
+      label: 'Auswahl',
       options: [
         {
           label: 'None',
           value: 'none',
         },
         {
-          label: 'High Impact',
-          value: 'highImpact',
+          label: 'Header 1',
+          value: 'header1',
         },
         {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
+          label: 'Header 5',
+          value: 'header5',
         },
         {
-          label: 'Low Impact',
-          value: 'lowImpact',
+          label: 'Header 9',
+          value: 'header9',
+        },
+        {
+          label: 'Header 19',
+          value: 'header19',
+        },
+        {
+          label: 'Header 26',
+          value: 'header26',
+        },
+        {
+          label: 'Header 30',
+          value: 'header30',
+        },
+        {
+          label: 'Header 36',
+          value: 'header36',
+        },
+        {
+          label: 'Header 37',
+          value: 'header37',
+        },
+        {
+          label: 'Header 76',
+          value: 'header76',
+        },
+        {
+          label: 'Header 77',
+          value: 'header77',
+        },
+        {
+          label: 'Header 78',
+          value: 'header78',
+        },
+        {
+          label: 'Header 83',
+          value: 'header83',
+        },
+        {
+          label: 'Header 104',
+          value: 'header104',
+        },
+        {
+          label: 'Header 127',
+          value: 'header127',
         },
       ],
       required: true,
     },
+    // * Hero Section Title
+    {
+      name: 'title',
+      type: 'text',
+      label: 'Hero Section Titel',
+      required: true,
+    },
+    // * Hero Section Rich Text
     {
       name: 'richText',
       type: 'richText',
@@ -51,8 +103,9 @@ export const hero: Field = {
           ]
         },
       }),
-      label: false,
+      label: 'Hero Section Fließtext',
     },
+    // * Hero Section Links
     linkGroup({
       overrides: {
         maxRows: 2,
@@ -60,13 +113,38 @@ export const hero: Field = {
     }),
     {
       name: 'media',
-      type: 'upload',
+      label: 'Hero Section Medien',
+      type: 'array', // <-- Jetzt ein Array, damit du mehrere Bilder speichern kannst
       admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+        condition: (_, { type } = {}) =>
+          [
+            'highImpact',
+            'mediumImpact',
+            'header1',
+            'header5',
+            'header9',
+            'header19',
+            'header26',
+            'header30',
+            'header36',
+            'header37',
+            'header76',
+            'header77',
+            'header78',
+            'header83',
+            'header104',
+            'header127',
+          ].includes(type),
       },
-      relationTo: 'media',
-      required: true,
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media', // Verknüpfung zur Media Collection
+          required: true,
+        },
+      ],
     },
   ],
-  label: false,
+  label: 'Hero Section Komponente',
 }

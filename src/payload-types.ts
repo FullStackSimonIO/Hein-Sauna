@@ -64,6 +64,7 @@ export interface Config {
   auth: {
     users: UserAuthOperations;
   };
+  blocks: {};
   collections: {
     pages: Page;
     posts: Post;
@@ -147,7 +148,23 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    type:
+      | 'none'
+      | 'header1'
+      | 'header5'
+      | 'header9'
+      | 'header19'
+      | 'header26'
+      | 'header30'
+      | 'header36'
+      | 'header37'
+      | 'header76'
+      | 'header77'
+      | 'header78'
+      | 'header83'
+      | 'header104'
+      | 'header127';
+    title: string;
     richText?: {
       root: {
         type: string;
@@ -187,7 +204,12 @@ export interface Page {
           id?: string | null;
         }[]
       | null;
-    media?: (number | null) | Media;
+    media?:
+      | {
+          image: number | Media;
+          id?: string | null;
+        }[]
+      | null;
   };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
   meta?: {
@@ -988,6 +1010,7 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         type?: T;
+        title?: T;
         richText?: T;
         links?:
           | T
@@ -1004,7 +1027,12 @@ export interface PagesSelect<T extends boolean = true> {
                   };
               id?: T;
             };
-        media?: T;
+        media?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
       };
   layout?:
     | T

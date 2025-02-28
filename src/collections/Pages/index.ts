@@ -82,7 +82,7 @@ export const Pages: CollectionConfig<'pages'> = {
               },
             },
           ],
-          label: 'Content',
+          label: 'Blöcke',
         },
         {
           name: 'meta',

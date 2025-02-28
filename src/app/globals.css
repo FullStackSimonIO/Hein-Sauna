@@ -101,3 +101,16 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-scrollUp {
+  animation: scrollUp 10s linear infinite;
+}
