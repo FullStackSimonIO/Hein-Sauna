@@ -5,7 +5,7 @@ import { Page } from '@/payload-types'
 
 export const Header26: React.FC<Page['hero']> = ({ title, richText, links, media }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="hero-section" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="flex flex-col items-center">
           <div className="rb-12 mb-12 text-center md:mb-18 lg:mb-20">
@@ -28,8 +28,8 @@ export const Header26: React.FC<Page['hero']> = ({ title, richText, links, media
             </div>
           </div>
           <div>
-            {media && !Array.isArray(media) && typeof media === 'object' && (
-              <Media fill imgClassName="-z-10 object-cover" priority resource={media} />
+            {Array.isArray(media) && media.length > 0 && (
+              <Media imgClassName="-z-10 fill object-cover" priority resource={media[0]!.image} />
             )}
           </div>
         </div>

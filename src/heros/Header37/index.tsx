@@ -10,8 +10,8 @@ export const Header37: React.FC<Page['hero']> = ({ title, richText, links, media
       className="grid grid-cols-1 items-center gap-y-16 pt-16 md:pt-24 lg:grid-cols-2 lg:pt-0"
     >
       <div className="order-2 lg:order-1">
-        {media && !Array.isArray(media) && typeof media === 'object' && (
-          <Media fill imgClassName="-z-10 object-cover" priority resource={media} />
+        {Array.isArray(media) && media.length > 0 && (
+          <Media imgClassName="-z-10 object-cover" priority resource={media[0]!.image} />
         )}
       </div>
       <div className="order-1 mx-[5%] sm:max-w-md md:justify-self-start lg:order-2 lg:ml-20 lg:mr-[5vw]">

@@ -27,8 +27,8 @@ export const Header36: React.FC<Page['hero']> = ({ title, richText, links, media
         </div>
       </div>
       <div>
-        {media && !Array.isArray(media) && typeof media === 'object' && (
-          <Media fill imgClassName="-z-10 object-cover" priority resource={media} />
+        {Array.isArray(media) && media.length > 0 && (
+          <Media imgClassName="-z-10 object-cover" priority resource={media[0]!.image} />
         )}
       </div>
     </section>

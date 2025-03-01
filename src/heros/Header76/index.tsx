@@ -12,7 +12,7 @@ export const Header76: React.FC<Page['hero']> = ({ title, richText, media = [], 
     >
       <div className="mx-[5%] max-w-[40rem] justify-self-start lg:ml-[5vw] lg:mr-20 lg:justify-self-end">
         <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl">{title}</h1>
-        {richText && <RichText className="mb-6 text-white" data={richText} enableGutter={false} />}
+        {richText && <RichText className="mb-6 text-black" data={richText} enableGutter={false} />}
         <div className="mt-6 flex flex-wrap gap-4 md:mt-8">
           {Array.isArray(links) && links.length > 0 && (
             <ul className="flex md:justify-center gap-4">

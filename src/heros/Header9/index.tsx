@@ -8,8 +8,8 @@ export const Header9: React.FC<Page['hero']> = ({ title, richText, links, media 
     <section id="relume" className="flex h-svh min-h-svh flex-col">
       <div className="relative flex-1">
         <div className="absolute inset-0 -z-10">
-          {media && !Array.isArray(media) && typeof media === 'object' && (
-            <Media fill imgClassName="-z-10 object-cover" priority resource={media} />
+          {Array.isArray(media) && media.length > 0 && (
+            <Media fill imgClassName="-z-10 object-cover" priority resource={media[0]!.image} />
           )}
         </div>
       </div>

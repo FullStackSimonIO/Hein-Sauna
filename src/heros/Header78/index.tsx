@@ -39,7 +39,6 @@ export const Header78: React.FC<Page['hero']> = ({ title, richText, media = [], 
                 <div key={index} className="relative w-[60vw] pt-[75%] sm:w-[18rem] md:w-[26rem]">
                   {imageObj.image && typeof imageObj.image === 'object' && (
                     <Media
-                      fill
                       imgClassName="absolute inset-0 size-full object-cover"
                       priority
                       resource={imageObj.image}
