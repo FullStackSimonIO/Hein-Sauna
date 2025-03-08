@@ -49,7 +49,7 @@ export const Gallery26: React.FC<Gallery26Props> = ({ heading, description, imag
                 key={index}
                 className="basis-[95%] pl-0 pr-6 sm:basis-4/5 md:basis-1/2 md:pr-8 lg:basis-[45%]"
               >
-                {image && <Media resource={image} className="size-full object-cover" />}
+                {image && <Media resource={image.image} className="size-full object-cover" />}
               </CarouselItem>
             ))}
           </CarouselContent>

@@ -98,7 +98,10 @@ import Gallery24 from '@/blocks/GallerySections/Gallery24/config'
 import Gallery1 from '@/blocks/GallerySections/Gallery1/config'
 import Gallery9 from '@/blocks/GallerySections/Gallery9/config'
 import Gallery20 from '@/blocks/GallerySections/Gallery20/config'
-import Portfolio from '@/blocks/PortfolioSections/config'
+import Stats2 from '@/blocks/StatsSection/Stats2/config'
+import { Stats4 } from '@/blocks/StatsSection/Stats4/config'
+import { Stats13 } from '@/blocks/StatsSection/Stats13/config'
+import Stats23 from '@/blocks/StatsSection/Stats23/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -242,7 +245,10 @@ export const Pages: CollectionConfig<'pages'> = {
                 Gallery1,
                 Gallery9,
                 Gallery20,
-                Portfolio,
+                Stats2,
+                Stats4,
+                Stats13,
+                Stats23,
               ],
               required: true,
               admin: {

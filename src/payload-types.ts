@@ -293,7 +293,10 @@ export interface Page {
     | Gallery1
     | Gallery9
     | Gallery20
-    | Portfolio
+    | Stats2
+    | Stats4
+    | Stats13
+    | Stats23
   )[];
   meta?: {
     title?: string | null;
@@ -4998,31 +5001,28 @@ export interface Gallery20 {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Portfolio".
+ * via the `definition` "Stats2".
  */
-export interface Portfolio {
-  projects: {
-    heading: string;
-    description?: {
-      root: {
+export interface Stats2 {
+  heading: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
         type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
         version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    image: number | Media;
-    button: {
-      title: string;
-      url: string;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
     };
+    [k: string]: unknown;
+  } | null;
+  stats: {
+    percentage: string;
+    heading: string;
     id?: string | null;
   }[];
   links?:
@@ -5051,7 +5051,144 @@ export interface Portfolio {
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'portfolio';
+  blockType: 'stats2';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Stats4".
+ */
+export interface Stats4 {
+  heading: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  image: number | Media;
+  stats?:
+    | {
+        percentage: string;
+        heading: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'stats4';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Stats13".
+ */
+export interface Stats13 {
+  tagline?: string | null;
+  heading: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  stats: {
+    percentage: string;
+    heading: string;
+    id?: string | null;
+  }[];
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'stats13';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Stats23".
+ */
+export interface Stats23 {
+  tagline?: string | null;
+  heading: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  defaultTabValue: string;
+  tabs: {
+    value: string;
+    percentage: string;
+    heading: string;
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    image?: (number | null) | Media;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'stats23';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -5419,7 +5556,10 @@ export interface PagesSelect<T extends boolean = true> {
         gallery1?: T | Gallery1Select<T>;
         gallery9?: T | Gallery9Select<T>;
         gallery20?: T | Gallery20Select<T>;
-        portfolio?: T | PortfolioSelect<T>;
+        stats2?: T | Stats2Select<T>;
+        stats4?: T | Stats4Select<T>;
+        stats13?: T | Stats13Select<T>;
+        stats23?: T | Stats23Select<T>;
       };
   meta?:
     | T
@@ -7941,21 +8081,16 @@ export interface Gallery20Select<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Portfolio_select".
+ * via the `definition` "Stats2_select".
  */
-export interface PortfolioSelect<T extends boolean = true> {
-  projects?:
+export interface Stats2Select<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  stats?:
     | T
     | {
+        percentage?: T;
         heading?: T;
-        description?: T;
-        image?: T;
-        button?:
-          | T
-          | {
-              title?: T;
-              url?: T;
-            };
         id?: T;
       };
   links?:
@@ -7971,6 +8106,79 @@ export interface PortfolioSelect<T extends boolean = true> {
               label?: T;
               appearance?: T;
             };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Stats4_select".
+ */
+export interface Stats4Select<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  image?: T;
+  stats?:
+    | T
+    | {
+        percentage?: T;
+        heading?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Stats13_select".
+ */
+export interface Stats13Select<T extends boolean = true> {
+  tagline?: T;
+  heading?: T;
+  description?: T;
+  stats?:
+    | T
+    | {
+        percentage?: T;
+        heading?: T;
+        id?: T;
+      };
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Stats23_select".
+ */
+export interface Stats23Select<T extends boolean = true> {
+  tagline?: T;
+  heading?: T;
+  description?: T;
+  defaultTabValue?: T;
+  tabs?:
+    | T
+    | {
+        value?: T;
+        percentage?: T;
+        heading?: T;
+        description?: T;
+        image?: T;
         id?: T;
       };
   id?: T;

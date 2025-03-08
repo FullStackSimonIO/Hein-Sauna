@@ -90,7 +90,10 @@ import { Gallery24 } from './GallerySections/Gallery24/Component'
 import { Gallery1 } from './GallerySections/Gallery1/Component'
 import { Gallery9 } from './GallerySections/Gallery9/Component'
 import { Gallery20 } from './GallerySections/Gallery20/Component'
-import { Portfolio17 } from './PortfolioSections/Portfolio17/Component'
+import { Stats2 } from './StatsSection/Stats2/Component'
+import { Stats4 } from './StatsSection/Stats4/Component'
+import { Stats13 } from './StatsSection/Stats13/Component'
+import { Stats23 } from './StatsSection/Stats23/Component'
 
 const blockComponents = {
   // ! Standard Blocks
@@ -191,7 +194,14 @@ const blockComponents = {
   gallery9: Gallery9,
   gallery20: Gallery20,
   // ! Portfolio Components
-  portfolio: Portfolio17,
+
+  // ! Event Components
+
+  // ! Stats Components
+  stats2: Stats2,
+  stats4: Stats4,
+  stats13: Stats13,
+  stats23: Stats23,
 }
 
 export const RenderBlocks: React.FC<{
