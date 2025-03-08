@@ -1,0 +1,31 @@
+.visitor-chart {
+  // background: rgba(20, 20, 20, 0.8); // Darker background to match the UI
+  border-radius: 12px; // Smooth rounded edges
+  padding: 24px;
+  text-align: center;
+  color: #ffffff;
+
+  .chart-header {
+    font-size: 1.8rem; // Bigger title
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+  }
+
+  .chart-description {
+    font-size: 1.2rem; // More readable description
+    color: rgba(255, 255, 255, 0.8); // Softer contrast
+    margin-bottom: 16px;
+  }
+
+  .recharts-cartesian-grid line {
+    stroke: rgba(255, 255, 255, 0.2); // Softer grid lines
+  }
+
+  .recharts-tooltip-wrapper {
+    background: rgba(20, 20, 20, 0.9);
+    border-radius: 8px;
+    padding: 8px;
+    color: #ffffff;
+  }
+}

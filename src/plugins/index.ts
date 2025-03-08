@@ -55,7 +55,7 @@ export const plugins: Plugin[] = [
     generateTitle,
     generateURL,
   }),
-  formBuilderPlugin({
+  /* formBuilderPlugin({
     fields: {
       payment: false,
     },
@@ -80,7 +80,7 @@ export const plugins: Plugin[] = [
         })
       },
     },
-  }),
+  }), */
   searchPlugin({
     collections: ['posts'],
     beforeSync: beforeSyncWithSearch,

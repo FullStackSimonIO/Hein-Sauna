@@ -1,0 +1,75 @@
+.nav__scroll {
+  background-color: #011627;
+}
+
+.nav-group__toggle {
+  font-size: 1.5rem;
+  color: #fdfffc;
+  text-decoration-line: underline;
+  text-underline-offset: 0.2em;
+}
+
+.nav-group__content {
+  font-size: 1.2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.nav__link {
+  color: #fdfffc !important;
+}
+
+.template-default__wrap {
+  background-color: #011627;
+}
+
+.dashboard__label {
+  color: #fdfffc !important;
+  text-decoration-line: underline;
+  text-underline-offset: 0.2em;
+}
+
+.card {
+  background: rgba(20, 20, 20, 0.7); /* Dunkles Glas-Design */
+  border-radius: 12px; /* Abgerundete Ecken */
+  padding: 20px; /* Etwas mehr Padding für bessere Proportionen */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  backdrop-filter: blur(8px); /* Glas-Effekt */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Dezente Umrandung */
+  text-align: center; /* Text in der Karte zentrieren */
+  display: flex; /* Flexbox für zentrierte Inhalte */
+  align-items: center; /* Vertikale Zentrierung */
+  justify-content: center; /* Horizontale Zentrierung */
+  font-size: 1.2rem; /* Größere Schriftgröße */
+  font-weight: 600; /* Etwas fetter für bessere Lesbarkeit */
+  color: #ffffff !important; /* Erzwingt eine helle Schrift */
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Falls nötig, Schatten für bessere Lesbarkeit */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Leichtes Vergrößern */
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1); /* Lichtschein-Effekt */
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card:active {
+  transform: scale(0.98); /* Leichtes Einrücken beim Klicken */
+}
+
+.list-controls__wrap {
+  background-color: #0a2a45;
+}
+
+.search-filter__input {
+  background-color: #0a2a45;
+}
+
+.table tr {
+  background-color: rgba(10, 42, 69, 0.5); /* Einheitlicher Glas-Hintergrund */
+}
+
+.table {
+  border-radius: 6px;
+}

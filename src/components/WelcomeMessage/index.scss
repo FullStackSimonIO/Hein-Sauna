@@ -1,0 +1,26 @@
+.welcome-banner {
+  background: rgba(20, 20, 20, 0.8); /* Gleichmäßige dunkle Farbgebung */
+  border-radius: 12px; /* Abgerundete Ecken für einen modernen Look */
+  padding: 24px;
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif; /* Falls du eine moderne Schrift nutzen möchtest */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Dezente Umrandung für Struktur */
+
+  /* Keine Schatten oder Hervorhebungen */
+  box-shadow: none;
+
+  h2 {
+    font-size: 1.8rem; /* Klare, aber nicht zu dominante Schriftgröße */
+    font-weight: 700;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9); /* Harmonischer Kontrast */
+  }
+
+  p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.7); /* Etwas abgeschwächte Schriftfarbe für angenehmes Lesen */
+  }
+}

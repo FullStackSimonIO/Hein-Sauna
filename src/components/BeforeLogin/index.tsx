@@ -4,8 +4,10 @@ const BeforeLogin: React.FC = () => {
   return (
     <div>
       <p>
-        <b>Welcome to your dashboard!</b>
-        {' This is where site admins will log in to manage your website.'}
+        <b>
+          Willkommen im Fullstack Factory Dashboard!
+          <br /> Loggen Sie sich mit Ihren Zugangsdaten ein, um ihr Ihre Website zu bearbeiten
+        </b>
       </p>
     </div>
   )

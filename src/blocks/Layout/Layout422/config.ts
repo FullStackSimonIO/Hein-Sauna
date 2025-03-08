@@ -1,5 +1,4 @@
 import type { Block } from 'payload'
-import { linkGroup } from '@/fields/linkGroup'
 import {
   FixedToolbarFeature,
   HeadingFeature,

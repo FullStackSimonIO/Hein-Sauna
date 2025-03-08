@@ -16,20 +16,83 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
-import NewsletterSubscribers from './collections/Newsletter'
+import Messages from './collections/Messages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
+    custom: {
+      logo: {
+        src: '/logo-wide.png',
+        alt: 'Fullstack Factory CMS',
+      },
+      favicon: '/favicon.svg',
+      footer: 'Fullstack Factory CMS',
+      login: {
+        background: '/login-background.jpg',
+        logo: {
+          src: '/logo-wide.png',
+          alt: 'Fullstack Factory CMS',
+        },
+      },
+    },
+    meta: {
+      titleSuffix: ' | Fullstack Factory CMS',
+
+      icons: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          url: '/favicon.svg',
+        },
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          url: '/apple-touch-icon.png',
+        },
+        {
+          rel: 'logo',
+          type: 'image/png',
+          url: '/logo-wide.png',
+        },
+        {
+          rel: 'beforeLogin',
+          type: 'image/png',
+          url: '/logo-wide.png',
+        },
+        {
+          rel: 'ogImage',
+          type: 'image/png',
+          url: '/logo-wide.png',
+        },
+      ],
+      openGraph: {
+        description: 'Ihr professioneller Partner für Webentwicklung und Design',
+        title: 'Fullstack Factory CMS',
+        images: [
+          {
+            url: '/open-graph.png',
+            width: 1200,
+            height: 630,
+            alt: 'Fullstack Factory CMS',
+          },
+        ],
+        siteName: 'Fullstack Factory',
+      },
+    },
+    timezones: {
+      defaultTimezone: 'Europe/Berlin',
+    },
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
-      beforeLogin: ['@/components/BeforeLogin'],
+      // beforeLogin: ['@/components/BeforeLogin'],
+
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
-      beforeDashboard: ['@/components/BeforeDashboard'],
+      beforeDashboard: ['@/components/WelcomeMessage', '@/components/MonthlyVisitorChart'],
     },
     importMap: {
       baseDir: path.resolve(dirname),
@@ -65,7 +128,7 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URL || '',
     },
   }),
-  collections: [Pages, NewsletterSubscribers, Posts, Media, Categories, Users],
+  collections: [Pages, Messages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [
@@ -76,6 +139,57 @@ export default buildConfig({
       },
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
+    /*payloadDashboardAnalytics({
+      provider: {
+        source: 'plausible',
+        apiSecret: PLAUSIBLE_API_KEY,
+        siteId: PLAUSIBLE_SITE_ID,
+        host: PLAUSIBLE_HOST, // optional, for self-hosted instances
+      },
+      cache: true,
+      access: (user: any) => {
+        return Boolean(user)
+      },
+      navigation: {
+        afterNavLinks: [
+          {
+            type: 'live',
+          },
+        ],
+      },
+      dashboard: {
+        beforeDashboard: ['viewsChart'],
+        afterDashboard: ['topPages'],
+      },
+      globals: [
+        {
+          slug: 'homepage',
+          widgets: [
+            {
+              type: 'info',
+              label: 'Page data',
+              metrics: ['views', 'sessions', 'sessionDuration'],
+              timeframe: 'currentMonth',
+              idMatcher: () => `/`,
+            },
+          ],
+        },
+      ],
+      collections: [
+        {
+          slug: Posts.slug,
+          widgets: [
+            {
+              type: 'chart',
+              label: 'Views and visitors',
+              metrics: ['views', 'visitors', 'sessions'],
+              timeframe: '30d',
+              idMatcher: (document: any) => `/articles/${document.slug}`,
+            },
+          ],
+        },
+      ],
+    }),*/
   ],
   secret: process.env.PAYLOAD_SECRET,
   sharp,

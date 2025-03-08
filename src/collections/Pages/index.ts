@@ -42,9 +42,46 @@ import Layout353 from '@/blocks/Layout/Layout353/config'
 import Layout414 from '@/blocks/Layout/Layout414/config'
 import Layout417 from '@/blocks/Layout/Layout417/config'
 import Layout351 from '@/blocks/Layout/Layout351/config'
-import Layout484 from '@/blocks/Layout/Layout484/config'
+import Layout493 from '@/blocks/Layout/Layout493/config'
+import Layout356 from '@/blocks/Layout/Layout356/config'
+import Layout486 from '@/blocks/Layout/Layout486/config'
+import { Layout488 } from '@/blocks/Layout/Layout488/config'
+import { Layout352 } from '@/blocks/Layout/Layout352/config'
+import { Layout354 } from '@/blocks/Layout/Layout354/config'
+import { Layout412 } from '@/blocks/Layout/Layout412/config'
+import { Layout413 } from '@/blocks/Layout/Layout413/config'
+import { Layout419 } from '@/blocks/Layout/Layout419/config'
+import { Layout424 } from '@/blocks/Layout/Layout424/config'
+import { Layout425 } from '@/blocks/Layout/Layout425/config'
+import { Layout485 } from '@/blocks/Layout/Layout485/config'
+import { Layout517 } from '@/blocks/Layout/Layout517/config'
+import { Contact1 } from '@/blocks/Contact/Contact1/config'
+import { Contact6 } from '@/blocks/Contact/Contact6/config'
+import { Contact24 } from '@/blocks/Contact/Contact24/config'
+import FAQ1 from '@/blocks/FAQ/FAQ1/config'
+import FAQ7 from '@/blocks/FAQ/FAQ7/config'
+import Faq3 from '@/blocks/FAQ/FAQ3/config'
+import Faq4 from '@/blocks/FAQ/FAQ4/config'
+import Faq11 from '@/blocks/FAQ/FAQ11/config'
+import Faq13 from '@/blocks/FAQ/FAQ13/config'
+import Faq14 from '@/blocks/FAQ/FAQ14/config'
+import Faq8 from '@/blocks/FAQ/FAQ8/config'
+import Testimonial17 from '@/blocks/Testimonials/Testimonial17/config'
+import Testimonial23 from '@/blocks/Testimonials/Testimonial23/config'
+import Testimonial32 from '@/blocks/Testimonials/Testimonial32/config'
+import Testimonial1 from '@/blocks/Testimonials/Testimonial1/config'
+import Testimonial3 from '@/blocks/Testimonials/Testimonial3/config'
+import Testimonial18 from '@/blocks/Testimonials/Testimonial18/config'
+import Testimonial21 from '@/blocks/Testimonials/Testimonial21/config'
+import Testimonial13 from '@/blocks/Testimonials/Testimonial13/config'
+import Testimonial26 from '@/blocks/Testimonials/Testimonial26/config'
+
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
+  labels: {
+    singular: 'Seite',
+    plural: 'Seiten',
+  },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -125,7 +162,39 @@ export const Pages: CollectionConfig<'pages'> = {
                 Layout414,
                 Layout417,
                 Layout351,
-                Layout484,
+                Layout493,
+                Layout356,
+                Layout486,
+                Layout488,
+                Layout352,
+                Layout354,
+                Layout412,
+                Layout413,
+                Layout419,
+                Layout424,
+                Layout425,
+                Layout485,
+                Layout517,
+                Contact1,
+                Contact6,
+                Contact24,
+                FAQ1,
+                FAQ7,
+                Faq3,
+                Faq4,
+                Faq11,
+                Faq13,
+                Faq14,
+                Faq8,
+                Testimonial17,
+                Testimonial23,
+                Testimonial32,
+                Testimonial1,
+                Testimonial3,
+                Testimonial18,
+                Testimonial21,
+                Testimonial13,
+                Testimonial26,
               ],
               required: true,
               admin: {
