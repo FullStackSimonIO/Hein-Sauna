@@ -67,13 +67,39 @@ import { Testimonial18 } from './Testimonials/Testimonial18/Component'
 import { Testimonial21 } from './Testimonials/Testimonial21/Component'
 import { Testimonial13 } from './Testimonials/Testimonial13/Component'
 import { Testimonial26 } from './Testimonials/Testimonial26/Component'
+import { Logo1 } from './LogoSections/Logo1/Component'
+import { Logo2 } from './LogoSections/Logo2/Component'
+import { Logo3 } from './LogoSections/Logo3/Component'
+import { Logo4 } from './LogoSections/Logo4/Component'
+import { Team1 } from './TeamSections/Team1/Component'
+import { Team2 } from './TeamSections/Team2/Component'
+import { Team16 } from './TeamSections/Team16/Component'
+import { Team18 } from './TeamSections/Team18/Component'
+import { Team21 } from './TeamSections/Team21/Component'
+import { Team22 } from './TeamSections/Team22/Component'
+import { Gallery27 } from './GallerySections/Gallery27/Component'
+import { Gallery26 } from './GallerySections/Gallery26/Component'
+import { Gallery21 } from './GallerySections/Gallery21/Component'
+import { Gallery15 } from './GallerySections/Gallery15/Component'
+import { Gallery19 } from './GallerySections/Gallery19/Component'
+import { Gallery8 } from './GallerySections/Gallery8/Component'
+import { Gallery10 } from './GallerySections/Gallery10/Component'
+import { Gallery13 } from './GallerySections/Gallery13/Component'
+import { Gallery7 } from './GallerySections/Gallery7/Component'
+import { Gallery24 } from './GallerySections/Gallery24/Component'
+import { Gallery1 } from './GallerySections/Gallery1/Component'
+import { Gallery9 } from './GallerySections/Gallery9/Component'
+import { Gallery20 } from './GallerySections/Gallery20/Component'
+import { Portfolio17 } from './PortfolioSections/Portfolio17/Component'
 
 const blockComponents = {
+  // ! Standard Blocks
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  // ! CTA Components
   cta7: CTA7,
   cta25: Cta25,
   cta1: Cta1,
@@ -81,6 +107,7 @@ const blockComponents = {
   cta38: Cta38,
   cta33: Cta33,
   cta15: Cta15,
+  // ! Header Components
   header64: Header64,
   header62: Header62,
   header47: Header47,
@@ -114,9 +141,11 @@ const blockComponents = {
   layout425: Layout425,
   layout485: Layout485,
   layout517: Layout517,
+  // ! Contact Components
   contact1: Contact1,
   contact6: Contact6,
   contact24: Contact24,
+  // ! FAQ Components
   faq1: Faq1,
   faq7: Faq7,
   faq3: Faq3,
@@ -125,6 +154,7 @@ const blockComponents = {
   faq13: Faq13,
   faq14: Faq14,
   faq8: Faq8,
+  // ! Testimonial Components
   testimonial17: Testimonial17,
   test23: Testimonial23,
   test32: Testimonial32,
@@ -134,6 +164,34 @@ const blockComponents = {
   test21: Testimonial21,
   test13: Testimonial13,
   test26: Testimonial26,
+  // ! Logo Components
+  logo1: Logo1,
+  logo2: Logo2,
+  logo3: Logo3,
+  logo4: Logo4,
+  // ! Team Components
+  team1: Team1,
+  team2: Team2,
+  team16: Team16,
+  team18: Team18,
+  team21: Team21,
+  team22: Team22,
+  // ! Gallery Components
+  gallery27: Gallery27,
+  gallery26: Gallery26,
+  gallery21: Gallery21,
+  gallery15: Gallery15,
+  gallery19: Gallery19,
+  gallery8: Gallery8,
+  gallery10: Gallery10,
+  gallery13: Gallery13,
+  gallery7: Gallery7,
+  gallery24: Gallery24,
+  gallery1: Gallery1,
+  gallery9: Gallery9,
+  gallery20: Gallery20,
+  // ! Portfolio Components
+  portfolio: Portfolio17,
 }
 
 export const RenderBlocks: React.FC<{

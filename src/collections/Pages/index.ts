@@ -75,6 +75,30 @@ import Testimonial18 from '@/blocks/Testimonials/Testimonial18/config'
 import Testimonial21 from '@/blocks/Testimonials/Testimonial21/config'
 import Testimonial13 from '@/blocks/Testimonials/Testimonial13/config'
 import Testimonial26 from '@/blocks/Testimonials/Testimonial26/config'
+import Logo1 from '@/blocks/LogoSections/Logo1/config'
+import Logo2 from '@/blocks/LogoSections/Logo2/config'
+import Logo3 from '@/blocks/LogoSections/Logo3/config'
+import Logo4 from '@/blocks/LogoSections/Logo4/config'
+import Team1 from '@/blocks/TeamSections/Team1/config'
+import Team2 from '@/blocks/TeamSections/Team2/config'
+import Team16 from '@/blocks/TeamSections/Team16/config'
+import Team18 from '@/blocks/TeamSections/Team18/config'
+import Team21 from '@/blocks/TeamSections/Team21/config'
+import Team22 from '@/blocks/TeamSections/Team22/config'
+import Gallery27 from '@/blocks/GallerySections/Gallery27/config'
+import Gallery26 from '@/blocks/GallerySections/Gallery26/config'
+import Gallery21 from '@/blocks/GallerySections/Gallery21/config'
+import Gallery15 from '@/blocks/GallerySections/Gallery15/config'
+import Gallery19 from '@/blocks/GallerySections/Gallery19/config'
+import Gallery8 from '@/blocks/GallerySections/Gallery8/config'
+import Gallery10 from '@/blocks/GallerySections/Gallery10/config'
+import Gallery13 from '@/blocks/GallerySections/Gallery13/config'
+import Gallery7 from '@/blocks/GallerySections/Gallery7/config'
+import Gallery24 from '@/blocks/GallerySections/Gallery24/config'
+import Gallery1 from '@/blocks/GallerySections/Gallery1/config'
+import Gallery9 from '@/blocks/GallerySections/Gallery9/config'
+import Gallery20 from '@/blocks/GallerySections/Gallery20/config'
+import Portfolio from '@/blocks/PortfolioSections/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -195,6 +219,30 @@ export const Pages: CollectionConfig<'pages'> = {
                 Testimonial21,
                 Testimonial13,
                 Testimonial26,
+                Logo1,
+                Logo2,
+                Logo3,
+                Logo4,
+                Team1,
+                Team2,
+                Team16,
+                Team18,
+                Team21,
+                Team22,
+                Gallery27,
+                Gallery26,
+                Gallery21,
+                Gallery15,
+                Gallery19,
+                Gallery8,
+                Gallery10,
+                Gallery13,
+                Gallery7,
+                Gallery24,
+                Gallery1,
+                Gallery9,
+                Gallery20,
+                Portfolio,
               ],
               required: true,
               admin: {
