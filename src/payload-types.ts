@@ -146,22 +146,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type:
-      | 'none'
-      | 'header1'
-      | 'header5'
-      | 'header9'
-      | 'header19'
-      | 'header26'
-      | 'header30'
-      | 'header36'
-      | 'header37'
-      | 'header76'
-      | 'header77'
-      | 'header78'
-      | 'header83'
-      | 'header104'
-      | 'header127';
+    type: 'none' | 'header1';
     title: string;
     richText?: {
       root: {

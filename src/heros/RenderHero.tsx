@@ -21,10 +21,10 @@ import { Header37 } from './Header37'
 import { Header77 } from './Header77'
 
 const heroes = {
-  highImpact: HighImpactHero,
+  header1: Header1,
+  /*highImpact: HighImpactHero,
   lowImpact: LowImpactHero,
   mediumImpact: MediumImpactHero,
-  header1: Header1,
   header5: Header5,
   header9: Header9,
   header19: Header19,
@@ -37,7 +37,7 @@ const heroes = {
   header78: Header78,
   header83: Header83,
   header104: Header104,
-  header127: Header127,
+  header127: Header127,*/
 }
 
 export const RenderHero: React.FC<Page['hero']> = (props) => {

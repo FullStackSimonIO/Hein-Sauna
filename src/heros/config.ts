@@ -27,58 +27,6 @@ export const hero: Field = {
           label: 'Header 1',
           value: 'header1',
         },
-        {
-          label: 'Header 5',
-          value: 'header5',
-        },
-        {
-          label: 'Header 9',
-          value: 'header9',
-        },
-        {
-          label: 'Header 19',
-          value: 'header19',
-        },
-        {
-          label: 'Header 26',
-          value: 'header26',
-        },
-        {
-          label: 'Header 30',
-          value: 'header30',
-        },
-        {
-          label: 'Header 36',
-          value: 'header36',
-        },
-        {
-          label: 'Header 37',
-          value: 'header37',
-        },
-        {
-          label: 'Header 76',
-          value: 'header76',
-        },
-        {
-          label: 'Header 77',
-          value: 'header77',
-        },
-        {
-          label: 'Header 78',
-          value: 'header78',
-        },
-        {
-          label: 'Header 83',
-          value: 'header83',
-        },
-        {
-          label: 'Header 104',
-          value: 'header104',
-        },
-        {
-          label: 'Header 127',
-          value: 'header127',
-        },
       ],
       required: true,
     },
