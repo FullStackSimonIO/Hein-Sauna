@@ -17,7 +17,7 @@ export const Team22: React.FC<Team22Props> = ({ tagline, heading, description, t
   const shouldAddAnotherDiv = (index: number) => [0, 2, 3, 4, 6].includes(index)
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="team-22" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container relative">
         <div className="static top-[50vh] mx-auto mt-20 max-w-lg translate-y-[-50%] text-center md:sticky">
           {tagline && <p className="mb-3 font-semibold md:mb-4">{tagline}</p>}
