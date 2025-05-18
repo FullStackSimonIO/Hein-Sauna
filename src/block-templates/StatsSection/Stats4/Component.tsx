@@ -6,7 +6,7 @@ import type { Stats4 as Stats4Props } from '@/payload-types'
 
 export const Stats4: React.FC<Stats4Props> = ({ heading, description, image, stats }) => {
   return (
-    <section id="relume" className="relative px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="stats-4" className="relative px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container relative z-10 flex flex-col items-start">
         <div className="rb-12 mb-12 grid grid-cols-1 items-start justify-between gap-5 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
           <h3 className="text-4xl font-bold leading-[1.2] text-text-alternative md:text-5xl lg:text-6xl">

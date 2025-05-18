@@ -6,7 +6,7 @@ import { Stats2 as Stats2Props } from '@/payload-types'
 
 export const Stats2: React.FC<Stats2Props> = ({ heading, description, stats }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="stats-2" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container flex flex-col items-start">
         <div className="rb-12 mb-12 grid grid-cols-1 items-start justify-between gap-5 md:mb-18 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:mb-20 lg:gap-x-20">
           <h3 className="text-4xl font-bold leading-[1.2] md:text-5xl lg:text-6xl">{heading}</h3>

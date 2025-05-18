@@ -15,7 +15,7 @@ export const Stats23: React.FC<Stats23Props> = ({
   tabs,
 }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="stats-23" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container flex flex-col items-start">
         <div className="rb-12 mb-12 w-full max-w-lg md:mb-18 lg:mb-20">
           {tagline && <p className="mb-3 font-semibold md:mb-4">{tagline}</p>}
