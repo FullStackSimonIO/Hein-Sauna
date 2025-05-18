@@ -9,22 +9,30 @@ import {
 
 export const CTA33: Block = {
   slug: 'cta33',
-  labels: {
-    singular: 'CTA33 Block',
-    plural: 'CTA33 Blöcke',
-  },
   interfaceName: 'CTA33',
+  labels: {
+    singular: 'CTA 33',
+    plural: 'CTA 33',
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
       label: 'Titel',
       required: true,
+      admin: {
+        placeholder: 'z. B. „Jetzt herunterladen!“',
+        description: 'Kurze, prägnante Überschrift für den CTA.',
+      },
     },
     {
       name: 'richText',
       type: 'richText',
       label: 'Text',
+      required: false,
+      admin: {
+        description: 'Optionaler erläuternder Text. Unterstützt Fettschrift, Listen, Links etc.',
+      },
       editor: lexicalEditor({
         features: ({ rootFeatures }) => [
           ...rootFeatures,
@@ -35,6 +43,7 @@ export const CTA33: Block = {
       }),
     },
     linkGroup({
+      appearances: ['default', 'outline'],
       overrides: { maxRows: 3 },
     }),
     {
@@ -43,6 +52,9 @@ export const CTA33: Block = {
       label: 'Logos',
       minRows: 1,
       maxRows: 10,
+      admin: {
+        description: 'Optional: Eine oder mehrere Firmen- oder Partner-Logos.',
+      },
       fields: [
         {
           name: 'image',
@@ -50,6 +62,9 @@ export const CTA33: Block = {
           relationTo: 'media',
           label: 'Logo Bild',
           required: true,
+          admin: {
+            description: 'Wähle ein Logo aus der Media-Collection.',
+          },
         },
       ],
     },

@@ -4,8 +4,8 @@ export const Contact1: Block = {
   slug: 'contact1',
   interfaceName: 'Contact1',
   labels: {
-    singular: 'Kontaktformular',
-    plural: 'Kontaktformulare',
+    singular: 'Contact 1',
+    plural: 'Contact 1',
   },
   fields: [
     {

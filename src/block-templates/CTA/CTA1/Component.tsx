@@ -9,7 +9,7 @@ import type { CTA1 as CTA1Props } from '@/payload-types'
 
 export const CTA1: React.FC<CTA1Props> = ({ title, richText, media, links }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="cta-1" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
           {/* ✅ Linke Seite mit Text */}
