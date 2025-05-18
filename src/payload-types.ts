@@ -194,7 +194,7 @@ export interface Page {
         }[]
       | null;
   };
-  layout: (ArchiveBlock | Contact1)[];
+  layout: ArchiveBlock[];
   meta?: {
     title?: string | null;
     /**
@@ -421,50 +421,6 @@ export interface ArchiveBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'archive';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Contact1".
- */
-export interface Contact1 {
-  /**
-   * Kleiner Hinweistext oberhalb der Überschrift.
-   */
-  tagline?: string | null;
-  /**
-   * Hauptüberschrift des Formulars.
-   */
-  heading: string;
-  /**
-   * Weiterführende Informationen oder Hinweise.
-   */
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  /**
-   * Text und Styling für den Senden-Button.
-   */
-  button: {
-    /**
-     * Beschriftung des Buttons.
-     */
-    title: string;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'contact1';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -750,7 +706,6 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         archive?: T | ArchiveBlockSelect<T>;
-        contact1?: T | Contact1Select<T>;
       };
   meta?:
     | T
@@ -777,22 +732,6 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
   categories?: T;
   limit?: T;
   selectedDocs?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Contact1_select".
- */
-export interface Contact1Select<T extends boolean = true> {
-  tagline?: T;
-  heading?: T;
-  description?: T;
-  button?:
-    | T
-    | {
-        title?: T;
-      };
   id?: T;
   blockName?: T;
 }

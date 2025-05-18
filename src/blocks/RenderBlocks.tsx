@@ -4,11 +4,7 @@ import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
 import { ArchiveBlock } from '@/block-templates/ArchiveBlock/Component'
 
-import Contact1 from './contact/Contact1/Component'
-//import { Contact1 } from './contact/Contact1/Component'
-
 const blockComponents = {
-  contact1: Contact1,
   archive: ArchiveBlock,
   /* PLOP_EXPORTS */
 } // ! Block Komponenten hier importieren
