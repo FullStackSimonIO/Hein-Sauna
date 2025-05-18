@@ -194,7 +194,7 @@ export interface Page {
         }[]
       | null;
   };
-  layout: (Contact24 | Contact1 | CTA1 | CTA7 | CTA15)[];
+  layout: (ArchiveBlock | Contact1)[];
   meta?: {
     title?: string | null;
     /**
@@ -390,12 +390,10 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Contact24".
+ * via the `definition` "ArchiveBlock".
  */
-export interface Contact24 {
-  tagline?: string | null;
-  heading: string;
-  richText?: {
+export interface ArchiveBlock {
+  introContent?: {
     root: {
       type: string;
       children: {
@@ -410,47 +408,36 @@ export interface Contact24 {
     };
     [k: string]: unknown;
   } | null;
-  contacts: {
-    iconType: 'email' | 'phone' | 'address' | 'message';
-    title: string;
-    description?: string | null;
-    links?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'pages';
-                  value: number | Page;
-                } | null)
-              | ({
-                  relationTo: 'posts';
-                  value: number | Post;
-                } | null);
-            url?: string | null;
-            label: string;
-            /**
-             * Choose how the link should be rendered.
-             */
-            appearance?: ('default' | 'outline') | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
-    id?: string | null;
-  }[];
+  populateBy?: ('collection' | 'selection') | null;
+  relationTo?: 'posts' | null;
+  categories?: (number | Category)[] | null;
+  limit?: number | null;
+  selectedDocs?:
+    | {
+        relationTo: 'posts';
+        value: number | Post;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'contact24';
+  blockType: 'archive';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "Contact1".
  */
 export interface Contact1 {
+  /**
+   * Kleiner Hinweistext oberhalb der Überschrift.
+   */
   tagline?: string | null;
+  /**
+   * Hauptüberschrift des Formulars.
+   */
   heading: string;
+  /**
+   * Weiterführende Informationen oder Hinweise.
+   */
   description?: {
     root: {
       type: string;
@@ -466,159 +453,18 @@ export interface Contact1 {
     };
     [k: string]: unknown;
   } | null;
-  button?: string | null;
+  /**
+   * Text und Styling für den Senden-Button.
+   */
+  button: {
+    /**
+     * Beschriftung des Buttons.
+     */
+    title: string;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'contact1';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTA1".
- */
-export interface CTA1 {
-  title: string;
-  richText: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  media: number | Media;
-  links?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'cta1';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTA7".
- */
-export interface CTA7 {
-  title: string;
-  richText?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  links?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'cta7';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTA15".
- */
-export interface CTA15 {
-  title: string;
-  richText?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  links?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  media: number | Media;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'cta15';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -903,11 +749,8 @@ export interface PagesSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        contact24?: T | Contact24Select<T>;
+        archive?: T | ArchiveBlockSelect<T>;
         contact1?: T | Contact1Select<T>;
-        cta1?: T | CTA1Select<T>;
-        cta7?: T | CTA7Select<T>;
-        cta15?: T | CTA15Select<T>;
       };
   meta?:
     | T
@@ -925,35 +768,15 @@ export interface PagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "Contact24_select".
+ * via the `definition` "ArchiveBlock_select".
  */
-export interface Contact24Select<T extends boolean = true> {
-  tagline?: T;
-  heading?: T;
-  richText?: T;
-  contacts?:
-    | T
-    | {
-        iconType?: T;
-        title?: T;
-        description?: T;
-        links?:
-          | T
-          | {
-              link?:
-                | T
-                | {
-                    type?: T;
-                    newTab?: T;
-                    reference?: T;
-                    url?: T;
-                    label?: T;
-                    appearance?: T;
-                  };
-              id?: T;
-            };
-        id?: T;
-      };
+export interface ArchiveBlockSelect<T extends boolean = true> {
+  introContent?: T;
+  populateBy?: T;
+  relationTo?: T;
+  categories?: T;
+  limit?: T;
+  selectedDocs?: T;
   id?: T;
   blockName?: T;
 }
@@ -965,84 +788,11 @@ export interface Contact1Select<T extends boolean = true> {
   tagline?: T;
   heading?: T;
   description?: T;
-  button?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTA1_select".
- */
-export interface CTA1Select<T extends boolean = true> {
-  title?: T;
-  richText?: T;
-  media?: T;
-  links?:
+  button?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
+        title?: T;
       };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTA7_select".
- */
-export interface CTA7Select<T extends boolean = true> {
-  title?: T;
-  richText?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CTA15_select".
- */
-export interface CTA15Select<T extends boolean = true> {
-  title?: T;
-  richText?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
-  media?: T;
   id?: T;
   blockName?: T;
 }

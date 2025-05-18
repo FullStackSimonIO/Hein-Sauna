@@ -7,11 +7,7 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
-import { Contact24 } from '@/blocks/contact/Contact24/config'
 import { Contact1 } from '@/blocks/contact/Contact1/config'
-import { CTA1 } from '@/blocks/cta/CTA1/config'
-import { CTA7 } from '@/blocks/cta/CTA7/config'
-import { CTA15 } from '@/blocks/cta/CTA15/config'
 /* PLOP_IMPORT_BLOCK_CONFIG */
 
 import {
@@ -21,6 +17,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { Archive } from '@/block-templates/ArchiveBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -81,17 +78,10 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               blocks: [
-                
-          Contact24,
-          
-          Contact1,
-          
-          CTA1,
-          
-          CTA7,
-          
-          CTA15,
-          /* PLOP_BLOCKS */
+                Archive,
+
+                Contact1,
+                /* PLOP_BLOCKS */
               ], // ! HIER DIE CONFIG DES BLOCKS IMPORTIEREN
               required: true,
               admin: {
