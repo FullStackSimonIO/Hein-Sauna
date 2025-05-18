@@ -6,7 +6,7 @@ import type { CTA25 as CTA25Props } from '@/payload-types'
 
 export const Cta25: React.FC<CTA25Props> = ({ title, richText, links }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="cta-25" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container max-w-lg text-center">
         <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">{title}</h2>
         {richText && <RichText className="mb-0" data={richText} enableGutter={false} />}

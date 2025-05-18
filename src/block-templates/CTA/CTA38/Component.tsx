@@ -17,7 +17,7 @@ export const Cta38: React.FC<CTA38Props> = ({ tagline, hoverLinks }) => {
   }
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28" onMouseMove={handleMouseMove}>
+    <section id="cta-38" className="px-[5%] py-16 md:py-24 lg:py-28" onMouseMove={handleMouseMove}>
       <div className="container">
         <p className="mb-6 font-semibold md:mb-8">{tagline}</p>
         <motion.div>

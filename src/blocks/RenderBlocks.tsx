@@ -2,11 +2,12 @@ import { Contact24 } from './contact/Contact24/Component'
 import { Contact1 } from './contact/Contact1/Component'
 import { CTA1 } from './cta/CTA1/Component'
 import { CTA7 } from './cta/CTA7/Component'
-import { CTA15 } from './cta/CTA15/Component'
+
 /* PLOP_IMPORTS */
 
 import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
+import { CTA15 } from './cta/CTA15/Component'
 
 const blockComponents = {
   cta15: CTA15,

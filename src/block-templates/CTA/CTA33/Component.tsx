@@ -9,7 +9,7 @@ import type { CTA33 as CTA33Props } from '@/payload-types'
 
 export const Cta33: React.FC<CTA33Props> = ({ title, richText, links, logos = [] }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="cta-33" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="mb-8 md:mb-10 lg:mb-12">
           <div className="mx-auto w-full max-w-lg text-center">

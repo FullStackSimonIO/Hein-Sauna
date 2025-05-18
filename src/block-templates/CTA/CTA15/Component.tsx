@@ -7,7 +7,7 @@ import type { CTA15 as CTA15Props } from '@/payload-types'
 
 export const CTA15: React.FC<CTA15Props> = ({ title, richText, links, media }) => {
   return (
-    <section id="relume" className="relative px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="cta-15" className="relative px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container relative z-10">
         <div className="grid grid-rows-1 items-start gap-y-5 md:grid-cols-2 md:gap-x-12 md:gap-y-8 lg:gap-x-20 lg:gap-y-16">
           <h1 className="text-5xl font-bold text-text-alternative md:text-7xl lg:text-8xl">
