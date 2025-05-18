@@ -1,10 +1,6 @@
 import React from 'react'
 
 import type { Page } from '@/payload-types'
-
-import { HighImpactHero } from '@/heros/HighImpact'
-import { LowImpactHero } from '@/heros/LowImpact'
-import { MediumImpactHero } from '@/heros/MediumImpact'
 import { Header1 } from './Header1'
 import { Header76 } from './Header76'
 import { Header78 } from './Header78'

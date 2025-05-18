@@ -4,7 +4,7 @@ import RichText from '@/components/RichText'
 
 import type { CTA15 as CTA15Props } from '@/payload-types'
 
-export const Cta15: React.FC<CTA15Props> = ({ title, richText, links, media }) => {
+export const CTA15: React.FC<CTA15Props> = ({ title, richText, links, media }) => {
   return (
     <section id="relume" className="relative px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container relative z-10">

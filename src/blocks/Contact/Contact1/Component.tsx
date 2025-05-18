@@ -2,7 +2,7 @@
 
 import { Button, Checkbox, Input, Label, Textarea } from '@relume_io/relume-ui'
 import React, { useState } from 'react'
-import type { LayoutContact1 as Contact1Props } from '@/payload-types'
+import type { Contact1 as Contact1Props } from '@/payload-types'
 import RichText from '@/components/RichText'
 
 export const Contact1: React.FC<Contact1Props> = ({ tagline, heading, description, button }) => {

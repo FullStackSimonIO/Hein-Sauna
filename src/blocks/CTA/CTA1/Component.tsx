@@ -6,7 +6,7 @@ import RichText from '@/components/RichText'
 
 import type { CTA1 as CTA1Props } from '@/payload-types'
 
-export const Cta1: React.FC<CTA1Props> = ({ title, richText, media, links }) => {
+export const CTA1: React.FC<CTA1Props> = ({ title, richText, media, links }) => {
   return (
     <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">

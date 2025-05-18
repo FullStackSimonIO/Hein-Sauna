@@ -2,7 +2,7 @@ import { Block } from 'payload'
 
 export const Contact1: Block = {
   slug: 'contact1',
-  interfaceName: 'LayoutContact1',
+  interfaceName: 'Contact1',
   fields: [
     {
       name: 'tagline',
