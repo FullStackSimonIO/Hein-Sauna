@@ -24,7 +24,7 @@ export const Layout485: React.FC<Layout485Props> = ({ features }) => {
   )
 
   return (
-    <section id="relume" ref={ref} className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-485" ref={ref} className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="relative grid auto-cols-fr grid-cols-1 items-start gap-x-8 gap-y-12 md:grid-cols-[0.75fr_1fr] md:gap-y-16 lg:grid-cols-[max-content_1fr] lg:gap-x-20">
           <div className="static top-[20%] hidden h-56 overflow-hidden md:sticky md:flex md:items-start">

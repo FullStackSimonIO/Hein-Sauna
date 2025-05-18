@@ -19,7 +19,7 @@ export const Layout354: React.FC<Layout354Props> = ({ sections }) => {
   const translateY = useTransform(scrollYProgress, [0, 1], ['0%', '-10%'])
 
   return (
-    <section id="relume" ref={containerRef} className="relative w-full">
+    <section id="layout-354" ref={containerRef} className="relative w-full">
       {sections.map((section, index) => {
         return (
           <motion.div

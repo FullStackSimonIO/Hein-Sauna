@@ -1,4 +1,5 @@
 import type { Block } from 'payload'
+import { linkGroup } from '@/fields/linkGroup'
 import {
   FixedToolbarFeature,
   HeadingFeature,
@@ -6,36 +7,53 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-export const Layout417: Block = {
+const Layout417: Block = {
   slug: 'layout417',
-  labels: {
-    singular: 'Layout417 Sektion',
-    plural: 'Layout417 Sektionen',
-  },
   interfaceName: 'Layout417',
+  labels: {
+    singular: 'Layout 417',
+    plural: 'Layout 417',
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
       label: 'Titel',
       required: true,
+      admin: {
+        placeholder: 'z. B. „Unsere Highlights“',
+        description: 'Hauptüberschrift für die Feature-Sektionen.',
+      },
     },
     {
       name: 'featureSections',
       type: 'array',
       label: 'Feature-Sektionen',
       required: true,
+      minRows: 1,
+      admin: {
+        description:
+          'Füge mindestens eine Feature-Sektion mit Titel, Beschreibung und Medien hinzu.',
+      },
       fields: [
         {
           name: 'title',
           type: 'text',
           label: 'Feature-Titel',
           required: true,
+          admin: {
+            placeholder: 'z. B. „Echtzeit-Daten“',
+            description: 'Überschrift für dieses Feature.',
+          },
         },
         {
           name: 'richText',
           type: 'richText',
           label: 'Feature-Beschreibung',
+          required: false,
+          admin: {
+            description: 'Beschreibe das Feature ausführlich. Unterstützt Formatierungen.',
+          },
           editor: lexicalEditor({
             features: ({ rootFeatures }) => [
               ...rootFeatures,
@@ -51,6 +69,9 @@ export const Layout417: Block = {
           relationTo: 'media',
           label: 'Feature Bild/Video',
           required: false,
+          admin: {
+            description: 'Optionales Bild oder Video zur Veranschaulichung des Features.',
+          },
         },
       ],
     },

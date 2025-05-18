@@ -7,7 +7,7 @@ import type { Layout38 as Layout38Props } from '@/payload-types'
 
 export const Layout38: React.FC<Layout38Props> = ({ title, richText, media }) => {
   return (
-    <section id="relume" className="relative px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-38" className="relative px-[5%] py-16 md:py-24 lg:py-28">
       {/* Inhalt */}
       <div className="container relative z-10">
         <div className="flex items-center">

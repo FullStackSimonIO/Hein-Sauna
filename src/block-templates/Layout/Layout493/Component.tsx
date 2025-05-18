@@ -15,7 +15,7 @@ export const Layout493: React.FC<Layout493Props> = ({ tagline, title, richText, 
   const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-493" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="relative">
           <div className="w-full pr-0 md:w-1/2 md:pr-6 lg:pr-10">

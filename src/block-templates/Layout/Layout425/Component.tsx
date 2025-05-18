@@ -31,7 +31,7 @@ export const Layout425: React.FC<Layout425Props> = ({ content, images = [] }) =>
   }
 
   return (
-    <section id="relume" className="relative h-[200vh] md:pb-[12%] lg:pb-[15%]">
+    <section id="layout-425" className="relative h-[200vh] md:pb-[12%] lg:pb-[15%]">
       <div className="sticky top-0 z-10 flex min-h-[120vh] flex-col items-center justify-center overflow-hidden md:min-h-screen md:overflow-visible">
         {/* Linke Bildseite */}
         <div className="absolute bottom-0 left-0 right-0 top-0 z-20 flex h-full w-full items-center justify-center md:right-auto md:ml-[5%] md:w-[30%] md:justify-start">

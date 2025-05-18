@@ -5,25 +5,35 @@ import {
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
+import { linkGroup } from '@/fields/linkGroup'
 
-export const Layout90: Block = {
+const Layout90: Block = {
   slug: 'layout90',
-  labels: {
-    singular: 'Layout90 Sektion',
-    plural: 'Layout90 Sektionen',
-  },
   interfaceName: 'Layout90',
+  labels: {
+    singular: 'Layout 90',
+    plural: 'Layout 90',
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
       label: 'Titel',
       required: true,
+      admin: {
+        placeholder: 'z. B. „Unsere Leistungen im Fokus“',
+        description: 'Kurze, prägnante Überschrift für die Sektion.',
+      },
     },
     {
       name: 'richText',
       type: 'richText',
       label: 'Text',
+      required: false,
+      admin: {
+        description:
+          'Optionaler Beschreibungstext unterhalb des Titels. Unterstützt Fettschrift, Listen, Links etc.',
+      },
       editor: lexicalEditor({
         features: ({ rootFeatures }) => [
           ...rootFeatures,
@@ -39,7 +49,14 @@ export const Layout90: Block = {
       relationTo: 'media',
       label: 'Bild oder Video',
       required: false,
+      admin: {
+        description: 'Optionales Bild oder Video zur Bebilderung der Sektion.',
+      },
     },
+    linkGroup({
+      appearances: ['default', 'outline'],
+      overrides: { maxRows: 2 },
+    }),
   ],
 }
 

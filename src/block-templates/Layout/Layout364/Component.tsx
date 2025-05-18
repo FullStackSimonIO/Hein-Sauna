@@ -8,7 +8,7 @@ import type { Layout364 as Layout364Props } from '@/payload-types'
 
 export const Layout364: React.FC<Layout364Props> = ({ tagline, title, richText, sections }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-364" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         {/* Header Section */}
         <div className="mb-12 md:mb-18 lg:mb-20 text-center">

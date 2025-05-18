@@ -16,7 +16,7 @@ export const Layout412: React.FC<Layout412Props> = ({
   img,
 }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-412" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="grid grid-cols-1 items-center gap-y-12 md:grid-cols-2 md:gap-0">
           {/* Text-Content */}

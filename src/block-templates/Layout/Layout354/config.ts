@@ -1,4 +1,4 @@
-import { Block } from 'payload'
+import type { Block } from 'payload'
 import { linkGroup } from '@/fields/linkGroup'
 import {
   FixedToolbarFeature,
@@ -7,26 +7,42 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-export const Layout354: Block = {
+const Layout354: Block = {
   slug: 'layout354',
   interfaceName: 'Layout354',
+  labels: {
+    singular: 'Layout 354',
+    plural: 'Layout 354',
+  },
   fields: [
     {
       name: 'sections',
       type: 'array',
-      label: 'Sections',
+      label: 'Sektionen',
       required: true,
+      minRows: 1,
+      admin: {
+        description: 'Füge 1–n Sektionen mit Überschrift, Beschreibung und Hintergrundbild hinzu.',
+      },
       fields: [
         {
           name: 'heading',
           type: 'text',
-          label: 'Heading',
+          label: 'Überschrift',
           required: true,
+          admin: {
+            placeholder: 'z. B. „Unsere Werte“',
+            description: 'Titel für diese Sektion.',
+          },
         },
         {
           name: 'description',
           type: 'richText',
           label: 'Beschreibung',
+          required: false,
+          admin: {
+            description: 'Optionaler Erläuterungstext. Unterstützt Fettschrift, Listen, Links etc.',
+          },
           editor: lexicalEditor({
             features: ({ rootFeatures }) => [
               ...rootFeatures,
@@ -39,16 +55,20 @@ export const Layout354: Block = {
         {
           name: 'image',
           type: 'upload',
-          label: 'Background Image',
+          label: 'Hintergrundbild',
           relationTo: 'media',
           required: true,
+          admin: {
+            description: 'Wähle ein Bild aus der Media-Collection als Hintergrund.',
+          },
         },
         linkGroup({
-          overrides: {
-            maxRows: 2,
-          },
+          appearances: ['default', 'outline'],
+          overrides: { maxRows: 2 },
         }),
       ],
     },
   ],
 }
+
+export default Layout354

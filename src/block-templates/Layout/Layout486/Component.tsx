@@ -34,7 +34,7 @@ export function Layout486({ features }: Layout486Props) {
   const y = isTablet ? yTablet : yDefault
 
   return (
-    <section id="relume" ref={ref} className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-486" ref={ref} className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="relative grid auto-cols-fr grid-cols-1 items-start gap-x-8 gap-y-12 md:grid-cols-[0.75fr_1fr] md:gap-y-16 lg:grid-cols-[max-content_1fr] lg:gap-x-20">
           {/* Sticky Number Counter */}

@@ -8,7 +8,7 @@ import RichText from '@/components/RichText'
 
 export const Layout366: React.FC<Layout366Props> = ({ tag, title, txt, img, big, small }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-366" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         {/* Header Section */}
         <div className="mb-12 md:mb-18 lg:mb-20">

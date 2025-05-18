@@ -5,25 +5,34 @@ import {
   FixedToolbarFeature,
   InlineToolbarFeature,
 } from '@payloadcms/richtext-lexical'
+import { linkGroup } from '@/fields/linkGroup'
 
-export const Header64: Block = {
+const Header64: Block = {
   slug: 'header64',
-  labels: {
-    singular: 'Header64 Block',
-    plural: 'Header64 Blöcke',
-  },
   interfaceName: 'Header64',
+  labels: {
+    singular: 'Header 64',
+    plural: 'Header 64',
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
       label: 'Titel',
       required: true,
+      admin: {
+        placeholder: 'z. B. „Datenanalyse“',
+        description: 'Hauptüberschrift im Header-Bereich.',
+      },
     },
     {
       name: 'richText',
       type: 'richText',
       label: 'Text',
+      required: false,
+      admin: {
+        description: 'Optionaler Beschreibungstext unter dem Titel. Unterstützt Formatierungen.',
+      },
       editor: lexicalEditor({
         features: ({ rootFeatures }) => [
           ...rootFeatures,
@@ -33,6 +42,10 @@ export const Header64: Block = {
         ],
       }),
     },
+    linkGroup({
+      appearances: ['default', 'outline'],
+      overrides: { maxRows: 2 },
+    }),
   ],
 }
 

@@ -37,7 +37,7 @@ export const Layout517: React.FC<Layout517Props> = ({ media, tagline, title, ric
   } as MotionStyle
 
   return (
-    <section id="relume" ref={containerRef} className="h-[200vh]">
+    <section id="layout-517" ref={containerRef} className="h-[200vh]">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         {media && (
           <motion.div className="absolute inset-0" style={imageStyle}>

@@ -12,7 +12,7 @@ import type { Layout356 as Layout356Props } from '@/payload-types'
 
 export function Layout356({ features }: Layout356Props) {
   return (
-    <section id="relume" className="relative">
+    <section id="layout-356" className="relative">
       <div className="sticky top-0">
         {features?.map((feature, index) => (
           <React.Fragment key={index}>

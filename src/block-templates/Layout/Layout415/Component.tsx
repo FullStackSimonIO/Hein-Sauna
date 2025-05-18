@@ -25,7 +25,7 @@ export const Layout415: React.FC<Layout415Props> = ({
   })
 
   return (
-    <section id="relume" ref={containerRef} className="px-[5%]">
+    <section id="layout-415" ref={containerRef} className="px-[5%]">
       <div className="container">
         <div className="relative h-[300svh] lg:h-[300vh]">
           <div className="static grid h-full grid-cols-1 content-start items-center gap-x-20 gap-y-16 py-16 md:sticky md:top-0 md:h-svh md:grid-cols-2 md:content-normal md:py-0 lg:h-screen">

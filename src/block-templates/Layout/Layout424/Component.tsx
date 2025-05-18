@@ -29,7 +29,7 @@ export const Layout424: React.FC<Layout424Props> = ({ tagline, headings }) => {
   }
 
   return (
-    <section id="relume" className="px-[5%]">
+    <section id="layout-424" className="px-[5%]">
       <div className="container">
         <div className="relative h-[300vh]">
           <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">

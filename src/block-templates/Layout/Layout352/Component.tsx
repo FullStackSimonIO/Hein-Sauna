@@ -16,7 +16,7 @@ export const Layout352: React.FC<Layout352Props> = ({ content, items }) => {
   })
 
   return (
-    <section id="relume" className="relative z-0 w-full" ref={scrollRef}>
+    <section id="layout-352" className="relative z-0 w-full" ref={scrollRef}>
       <div className="relative -z-30">
         <div>
           <Content {...content} />

@@ -45,7 +45,7 @@ export const Layout488: React.FC<Layout488Props> = ({
   }
 
   return (
-    <section ref={sectionRef} id="relume" className="relative h-[200vh]">
+    <section ref={sectionRef} id="layout-488" className="relative h-[200vh]">
       <div className="sticky top-0 grid h-svh grid-cols-[60%] content-center items-center justify-center justify-items-center gap-4 overflow-hidden px-[5%] md:grid-cols-[40%_max-content_40%] md:gap-8 lg:h-screen">
         {/* Linke Überschrift (Desktop) */}
         {leftHeading && (

@@ -12,7 +12,7 @@ export const Layout499: React.FC<Layout499Props> = ({ tagline, title, richText, 
   const defaultTab = tabs?.[0]?.value ?? ''
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-499" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         {/* Header Section */}
         <div className="mx-auto mb-12 w-full max-w-lg text-center md:mb-18 md:w-auto lg:mb-20">

@@ -7,7 +7,7 @@ import type { Header50 as Header50Props } from '@/payload-types'
 
 export const Header50: React.FC<Header50Props> = ({ title, tagline, richText, media, links }) => {
   return (
-    <section id="relume" className="relative px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="header-50" className="relative px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container relative z-10">
         <div className="w-full max-w-lg">
           <p className="mb-3 font-semibold text-text-alternative md:mb-4">{tagline}</p>

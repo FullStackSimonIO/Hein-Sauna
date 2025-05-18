@@ -9,7 +9,7 @@ import type { Layout419 as Layout419Props } from '@/payload-types'
 
 export const Layout419: React.FC<Layout419Props> = ({ links, title, tagline, richText, data }) => {
   return (
-    <section id="relume" className="pt-24 md:pt-0">
+    <section id="layout-419" className="pt-24 md:pt-0">
       <div className="grid grid-cols-1 gap-y-16 md:grid-cols-2 md:gap-y-0">
         {/* Linke Seite: Titel, Text & Links */}
         <div>

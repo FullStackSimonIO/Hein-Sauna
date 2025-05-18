@@ -25,7 +25,7 @@ export const Layout423: React.FC<Layout423Props> = ({ tagline, title, richText, 
   const [hoveredFeatureIdx, setHoveredFeatureIdx] = useState<number | null>(null)
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-423" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         {/* Header */}
         <div className="mx-auto mb-12 w-full max-w-lg text-center md:mb-18 lg:mb-20">

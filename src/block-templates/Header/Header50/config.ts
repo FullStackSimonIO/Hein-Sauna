@@ -7,30 +7,43 @@ import {
 } from '@payloadcms/richtext-lexical'
 import { linkGroup } from '@/fields/linkGroup'
 
-export const Header50: Block = {
+const Header50: Block = {
   slug: 'header50',
-  labels: {
-    singular: 'Header50 Block',
-    plural: 'Header50 Blöcke',
-  },
   interfaceName: 'Header50',
+  labels: {
+    singular: 'Header 50',
+    plural: 'Header 50',
+  },
   fields: [
     {
       name: 'tagline',
       type: 'text',
       label: 'Tagline',
       required: false,
+      admin: {
+        placeholder: 'z. B. „Entdecken Sie unsere Welt“',
+        description: 'Optionaler kurzer Begriff oberhalb des Titels.',
+      },
     },
     {
       name: 'title',
       type: 'text',
       label: 'Titel',
       required: true,
+      admin: {
+        placeholder: 'z. B. „Ihr Partner für Innovation“',
+        description: 'Hauptüberschrift im Header-Bereich.',
+      },
     },
     {
       name: 'richText',
       type: 'richText',
       label: 'Text',
+      required: false,
+      admin: {
+        description:
+          'Optionaler Fließtext unter dem Titel. Unterstützt Fettschrift, Listen, Links etc.',
+      },
       editor: lexicalEditor({
         features: ({ rootFeatures }) => [
           ...rootFeatures,
@@ -43,14 +56,16 @@ export const Header50: Block = {
     {
       name: 'media',
       type: 'upload',
-      relationTo: 'media', // Verknüpfung zur Media Collection
+      relationTo: 'media',
       label: 'Hintergrundbild',
       required: false,
+      admin: {
+        description: 'Optionales Hintergrundbild für den Header.',
+      },
     },
     linkGroup({
-      overrides: {
-        maxRows: 2,
-      },
+      appearances: ['default', 'outline'],
+      overrides: { maxRows: 2 },
     }),
   ],
 }

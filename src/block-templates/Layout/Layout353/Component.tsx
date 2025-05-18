@@ -14,7 +14,7 @@ export const Layout353: React.FC<Layout353Props> = ({
   featureSections,
 }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="layout-353" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="grid grid-cols-1 items-start gap-y-12 md:grid-flow-row md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
           {/* Linke Spalte: Überschrift, Text, Buttons */}

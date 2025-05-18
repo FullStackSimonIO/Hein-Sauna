@@ -23,7 +23,7 @@ export const Layout349: React.FC<Layout349Props> = ({ contents }) => {
   }, [])
 
   return (
-    <section id="relume" className="px-[5%]">
+    <section id="layout-349" className="px-[5%]">
       <div className="container">
         <div className="relative grid gap-x-12 py-16 sm:gap-y-12 md:grid-cols-2 md:py-0 lg:gap-x-20">
           {/* Content Section */}
