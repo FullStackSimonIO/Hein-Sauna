@@ -1,64 +1,118 @@
+import type { Block } from 'payload'
 import { linkGroup } from '@/fields/linkGroup'
-import { Block } from 'payload'
+import {
+  lexicalEditor,
+  HeadingFeature,
+  FixedToolbarFeature,
+  InlineToolbarFeature,
+} from '@payloadcms/richtext-lexical'
 
-const Faq13: Block = {
+const FAQ13: Block = {
   slug: 'faq13',
   interfaceName: 'FAQ13',
   labels: {
-    singular: 'FAQ Block',
-    plural: 'FAQ Blocks',
+    singular: 'FAQ 13',
+    plural: 'FAQ 13',
   },
   fields: [
     {
       name: 'heading',
       type: 'text',
+      label: 'Überschrift',
       required: true,
-      label: 'Heading',
+      admin: {
+        placeholder: 'z. B. „Häufig gestellte Fragen“',
+        description: 'Hauptüberschrift für den FAQ-Bereich.',
+      },
     },
     {
       name: 'description',
       type: 'richText',
-      label: 'Text',
+      label: 'Einleitungstext',
+      required: false,
+      admin: {
+        description: 'Optionaler Einleitungstext über den Fragen. Unterstützt Formatierungen.',
+      },
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+        ],
+      }),
     },
     {
       name: 'questions',
       type: 'array',
+      label: 'Fragen',
       required: true,
-      labels: {
-        singular: 'Question',
-        plural: 'Questions',
+      minRows: 1,
+      admin: {
+        description: 'Füge mindestens eine Frage mit Antwort hinzu.',
       },
       fields: [
         {
           name: 'title',
           type: 'text',
-          required: true,
           label: 'Frage',
+          required: true,
+          admin: {
+            placeholder: 'z. B. „Wie funktioniert ...?“',
+            description: 'Formuliere hier die Frage.',
+          },
         },
         {
           name: 'answer',
           type: 'richText',
-          label: 'Anwort',
+          label: 'Antwort',
+          required: false,
+          admin: {
+            description: 'Antwort auf die Frage. Unterstützt Formatierungen.',
+          },
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => [
+              ...rootFeatures,
+              HeadingFeature({ enabledHeadingSizes: ['h4'] }),
+              FixedToolbarFeature(),
+              InlineToolbarFeature(),
+            ],
+          }),
         },
       ],
     },
     {
       name: 'footerHeading',
       type: 'text',
-      label: 'Footer Heading',
+      label: 'Footer-Überschrift',
+      required: false,
+      admin: {
+        placeholder: 'z. B. „Noch Fragen?“',
+        description: 'Überschrift im Footer unter den FAQs.',
+      },
     },
     {
       name: 'footerDescription',
       type: 'richText',
-      label: 'Text',
+      label: 'Footer-Beschreibung',
+      required: false,
+      admin: {
+        description: 'Optionaler Text im Footer-Bereich. Unterstützt Formatierungen.',
+      },
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+        ],
+      }),
     },
     linkGroup({
       appearances: ['default', 'outline'],
-      overrides: {
-        maxRows: 2,
-      },
+      overrides: { maxRows: 2 },
     }),
   ],
 }
 
-export default Faq13
+export default FAQ13

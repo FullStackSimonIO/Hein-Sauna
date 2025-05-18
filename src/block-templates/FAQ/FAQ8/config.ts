@@ -1,54 +1,92 @@
+import type { Block } from 'payload'
 import { linkGroup } from '@/fields/linkGroup'
-import { Block } from 'payload'
+import {
+  lexicalEditor,
+  HeadingFeature,
+  FixedToolbarFeature,
+  InlineToolbarFeature,
+} from '@payloadcms/richtext-lexical'
 
-const Faq8: Block = {
+const FAQ8: Block = {
   slug: 'faq8',
   interfaceName: 'FAQ8',
   labels: {
-    singular: 'FAQ Block',
-    plural: 'FAQ Blocks',
+    singular: 'FAQ 8',
+    plural: 'FAQ 8',
   },
   fields: [
     {
       name: 'heading',
       type: 'text',
+      label: 'Überschrift',
       required: true,
-      label: 'Heading',
+      admin: {
+        placeholder: 'z. B. „Ihre Fragen beantwortet“',
+        description: 'Hauptüberschrift für den FAQ-Bereich.',
+      },
     },
     {
       name: 'headingDescription',
       type: 'richText',
-      label: 'Heading Description',
+      label: 'Einleitungstext',
+      required: false,
+      admin: {
+        description:
+          'Optionaler Einleitungstext unterhalb der Überschrift. Unterstützt Formatierungen.',
+      },
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => [
+          ...rootFeatures,
+          HeadingFeature({ enabledHeadingSizes: ['h3', 'h4'] }),
+          FixedToolbarFeature(),
+          InlineToolbarFeature(),
+        ],
+      }),
     },
     {
       name: 'questions',
       type: 'array',
+      label: 'Fragen',
       required: true,
-      labels: {
-        singular: 'Question',
-        plural: 'Questions',
+      minRows: 1,
+      admin: {
+        description: 'Füge mindestens eine Frage mit Antwort hinzu.',
       },
       fields: [
         {
           name: 'title',
           type: 'text',
+          label: 'Frage',
           required: true,
-          label: 'Question',
+          admin: {
+            placeholder: 'z. B. „Wie kann ich ...?“',
+            description: 'Formuliere hier die Frage.',
+          },
         },
         {
           name: 'answer',
           type: 'richText',
-          label: 'Heading Description',
+          label: 'Antwort',
+          required: false,
+          admin: {
+            description: 'Antwort auf die Frage. Unterstützt Formatierungen.',
+          },
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => [
+              ...rootFeatures,
+              HeadingFeature({ enabledHeadingSizes: ['h4'] }),
+              FixedToolbarFeature(),
+              InlineToolbarFeature(),
+            ],
+          }),
         },
       ],
     },
     linkGroup({
       appearances: ['default', 'outline'],
-      overrides: {
-        maxRows: 2,
-      },
+      overrides: { maxRows: 2 },
     }),
   ],
 }
 
-export default Faq8
+export default FAQ8
