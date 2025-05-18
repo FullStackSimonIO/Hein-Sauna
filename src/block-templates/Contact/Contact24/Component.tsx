@@ -17,7 +17,7 @@ export const Contact24: React.FC<Contact24Props> = ({ tagline, heading, contacts
   }
 
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="contact-24" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="rb-12 mb-12 max-w-lg md:mb-18 lg:mb-20">
           {tagline && <p className="mb-3 font-semibold md:mb-4">{tagline}</p>}
