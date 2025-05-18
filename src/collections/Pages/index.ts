@@ -7,7 +7,8 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
-import { Contact1 } from '@/blocks/contact/Contact1/config'
+import Contact1 from '@/blocks/contact/Contact1/config'
+//import { Contact1 } from '@/blocks/contact/Contact1/config'
 /* PLOP_IMPORT_BLOCK_CONFIG */
 
 import {
