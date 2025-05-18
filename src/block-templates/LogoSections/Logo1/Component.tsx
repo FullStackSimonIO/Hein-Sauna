@@ -6,7 +6,7 @@ import type { Logo1 as Logo1Props } from '@/payload-types'
 
 export const Logo1: React.FC<Logo1Props> = ({ heading, logos }) => {
   return (
-    <section id="relume" className="px-[5%] py-12 md:py-16 lg:py-20">
+    <section id="logo-1" className="px-[5%] py-12 md:py-16 lg:py-20">
       <div className="container">
         <h1 className="mx-auto mb-6 w-full max-w-lg text-center text-base font-bold leading-[1.2] md:mb-8 md:text-md md:leading-[1.2]">
           {heading}
