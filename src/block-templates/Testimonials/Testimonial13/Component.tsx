@@ -17,7 +17,7 @@ export const Testimonial13: React.FC<Testimonial13Props> = ({
   quote,
 }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="testimonial-13" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="grid w-full auto-cols-fr grid-cols-1 items-center justify-center gap-12 md:grid-cols-2 md:gap-10 lg:gap-x-20">
           <div className="order-last md:order-first">

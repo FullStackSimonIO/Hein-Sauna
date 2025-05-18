@@ -16,7 +16,7 @@ export const Testimonial1: React.FC<Testimonial1Props> = ({
   links,
 }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="testimonial-1" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container w-full max-w-lg">
         <div className="flex flex-col items-center text-center">
           <div className="mb-6 md:mb-8">
