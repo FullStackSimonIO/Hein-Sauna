@@ -30,7 +30,7 @@ export const Gallery13: React.FC<Gallery13Props> = ({ heading, description, imag
   }, [api])
 
   return (
-    <section id="relume">
+    <section id="gallery-13" className="relative overflow-hidden">
       <div className="px-[5%] py-16 md:py-24 lg:py-28">
         <div className="container text-center">
           <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">

@@ -27,7 +27,7 @@ export const Gallery15: React.FC<Gallery15Props> = ({ heading, description, imag
   }, [api])
 
   return (
-    <section id="relume">
+    <section id="gallery-15">
       <div className="px-[5%] py-16 md:py-24 lg:py-28">
         <div className="container">
           <div className="rb-12 mb-12 text-center md:mb-18 lg:mb-20">

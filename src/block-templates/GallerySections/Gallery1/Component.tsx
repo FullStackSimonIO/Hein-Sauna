@@ -8,7 +8,7 @@ import type { Gallery1 as Gallery1Props } from '@/payload-types'
 
 export const Gallery1: React.FC<Gallery1Props> = ({ heading, description, images }) => {
   return (
-    <section id="relume" className="px-[5%] py-16 md:py-24 lg:py-28">
+    <section id="gallery-1" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container">
         <div className="mb-12 text-center md:mb-18 lg:mb-20">
           <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">{heading}</h2>

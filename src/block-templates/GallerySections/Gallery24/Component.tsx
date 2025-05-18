@@ -15,7 +15,7 @@ export const Gallery24: React.FC<Gallery24Props> = ({ heading, description, imag
   const x = useTransform(scrollYProgress, [0, 1], ['0%', '-100%'])
 
   return (
-    <section id="relume" ref={transformRef}>
+    <section id="gallery-24" ref={transformRef}>
       <div className="px-[5%] pt-16 md:pt-24 lg:pt-28">
         <div className="container text-center ">
           <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">

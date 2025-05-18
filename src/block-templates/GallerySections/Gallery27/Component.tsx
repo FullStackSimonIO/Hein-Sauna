@@ -27,7 +27,7 @@ export const Gallery27: React.FC<Gallery27Props> = ({ heading, description, imag
   }, [api])
 
   return (
-    <section id="relume" className="overflow-hidden py-16 md:py-24 lg:py-28">
+    <section id="gallery-27" className="overflow-hidden py-16 md:py-24 lg:py-28">
       <div className="grid auto-cols-fr grid-cols-1 items-center gap-12 md:gap-16 lg:grid-cols-2 lg:gap-0">
         <div className="flex lg:justify-self-end">
           <div className="mx-[5%] w-full max-w-md lg:mb-24 lg:ml-[5vw] lg:mr-20">
