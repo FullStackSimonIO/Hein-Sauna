@@ -13,8 +13,8 @@
     font-weight: unset;
   }
 
-  :root {
-    --background: 0 0% 100%;
+  /* :root {
+    --background: #ffb703;
     --foreground: 222.2 84% 4.9%;
 
     --card: 240 5% 96%;
@@ -23,7 +23,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: #ffb703;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -50,7 +50,7 @@
   }
 
   [data-theme='dark'] {
-    --background: #023047;
+    --background: #ffb703;
     --foreground: 210 40% 98%;
 
     --card: 0 0% 4%;
@@ -59,7 +59,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: #ffb703%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -81,6 +81,15 @@
     --success: 196 100% 14%;
     --warning: 34 51% 25%;
     --error: 10 39% 43%;
+  }*/
+}
+
+@layer base {
+  :root {
+    --background: #eeeeee;
+    --heading: #ffffff;
+    --paragraph: #eeeeee;
+    --accent: #07be60;
   }
 }
 
@@ -89,17 +98,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+    @apply bg-background text-paragraph min-h-[100vh] flex flex-col;
   }
-}
-
-html {
-  opacity: 0;
-}
-
-html[data-theme='dark'],
-html[data-theme='light'] {
-  opacity: initial;
 }
 
 @keyframes scrollUp {
@@ -113,4 +113,37 @@ html[data-theme='light'] {
 
 .animate-scrollUp {
   animation: scrollUp 10s linear infinite;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-paragraph);
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease-in-out;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
 }

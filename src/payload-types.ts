@@ -146,7 +146,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'header1';
+    type: 'none' | 'header1' | 'header5';
     title: string;
     richText?: {
       root: {
@@ -194,7 +194,7 @@ export interface Page {
         }[]
       | null;
   };
-  layout: ArchiveBlock[];
+  layout: (ArchiveBlock | Header64)[];
   meta?: {
     title?: string | null;
     /**
@@ -421,6 +421,61 @@ export interface ArchiveBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'archive';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Header64".
+ */
+export interface Header64 {
+  /**
+   * Hauptüberschrift im Header-Bereich.
+   */
+  title: string;
+  /**
+   * Optionaler Beschreibungstext unter dem Titel. Unterstützt Formatierungen.
+   */
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'header64';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -706,6 +761,7 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         archive?: T | ArchiveBlockSelect<T>;
+        header64?: T | Header64Select<T>;
       };
   meta?:
     | T
@@ -732,6 +788,31 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
   categories?: T;
   limit?: T;
   selectedDocs?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Header64_select".
+ */
+export interface Header64Select<T extends boolean = true> {
+  title?: T;
+  richText?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

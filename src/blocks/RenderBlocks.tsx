@@ -3,8 +3,10 @@
 import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
 import { ArchiveBlock } from '@/block-templates/ArchiveBlock/Component'
+import { Header64 } from './Header/Header64/Component'
 
 const blockComponents = {
+  header64: Header64,
   archive: ArchiveBlock,
   /* PLOP_EXPORTS */
 } // ! Block Komponenten hier importieren
