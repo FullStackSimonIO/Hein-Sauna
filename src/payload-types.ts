@@ -67,6 +67,7 @@ export interface Config {
   blocks: {};
   collections: {
     pages: Page;
+    saunas: Sauna;
     messages: Message;
     posts: Post;
     media: Media;
@@ -82,6 +83,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
+    saunas: SaunasSelect<false> | SaunasSelect<true>;
     messages: MessagesSelect<false> | MessagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -355,9 +357,37 @@ export interface Media {
  */
 export interface Category {
   id: number;
-  title: string;
-  slug?: string | null;
-  slugLock?: boolean | null;
+  name: string;
+  /**
+   * Wofür wird diese Kategorie verwendet?
+   */
+  type: 'sauna' | 'blog';
+  /**
+   * Wird in der URL verwendet, z.B. `/saunas/premium-sauna`
+   */
+  slug: string;
+  /**
+   * Wird im Hero-Block auf der Kategorie-Preview angezeigt
+   */
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Wird als Hero-Hintergrund oder in den Vorschaulinks der Kategorie verwendet
+   */
+  previewImage?: (number | null) | Media;
   parent?: (number | null) | Category;
   breadcrumbs?:
     | {
@@ -476,6 +506,133 @@ export interface Header64 {
   id?: string | null;
   blockName?: string | null;
   blockType: 'header64';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "saunas".
+ */
+export interface Sauna {
+  id: number;
+  name: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  /**
+   * Wähle die Sauna-Kategorie
+   */
+  category: number | Category;
+  /**
+   * Bild für die Kachel-Vorschau
+   */
+  previewImage: number | Media;
+  /**
+   * Wird als Teaser-Text in der Card angezeigt
+   */
+  previewDescription: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Unverbindliche Preisempfehlung
+   */
+  uvp?: number | null;
+  /**
+   * Dein Verkaufspreis
+   */
+  price: number;
+  /**
+   * Optionaler Rabatt in Prozent
+   */
+  discount?: number | null;
+  /**
+   * Link und Label für den Button in der Vorschau
+   */
+  ctaLink: {
+    label: string;
+    link?: {
+      type?: ('reference' | 'custom') | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'saunas';
+            value: number | Sauna;
+          } | null);
+      url?: string | null;
+    };
+  };
+  hero: {
+    type: 'none' | 'header1' | 'header5';
+    title: string;
+    richText?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose how the link should be rendered.
+             */
+            appearance?: ('default' | 'outline') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    media?:
+      | {
+          image: number | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  layout?: ArchiveBlock[] | null;
+  title?: string | null;
+  /**
+   * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+   */
+  image?: (number | null) | Media;
+  description?: string | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -650,6 +807,10 @@ export interface PayloadLockedDocument {
         value: number | Page;
       } | null)
     | ({
+        relationTo: 'saunas';
+        value: number | Sauna;
+      } | null)
+    | ({
         relationTo: 'messages';
         value: number | Message;
       } | null)
@@ -818,6 +979,73 @@ export interface Header64Select<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "saunas_select".
+ */
+export interface SaunasSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  slugLock?: T;
+  category?: T;
+  previewImage?: T;
+  previewDescription?: T;
+  uvp?: T;
+  price?: T;
+  discount?: T;
+  ctaLink?:
+    | T
+    | {
+        label?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              reference?: T;
+              url?: T;
+            };
+      };
+  hero?:
+    | T
+    | {
+        type?: T;
+        title?: T;
+        richText?: T;
+        links?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                    appearance?: T;
+                  };
+              id?: T;
+            };
+        media?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
+      };
+  layout?:
+    | T
+    | {
+        archive?: T | ArchiveBlockSelect<T>;
+      };
+  title?: T;
+  image?: T;
+  description?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "messages_select".
  */
 export interface MessagesSelect<T extends boolean = true> {
@@ -957,9 +1185,11 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
-  title?: T;
+  name?: T;
+  type?: T;
   slug?: T;
-  slugLock?: T;
+  description?: T;
+  previewImage?: T;
   parent?: T;
   breadcrumbs?:
     | T
@@ -1209,6 +1439,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'pages';
           value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'saunas';
+          value: number | Sauna;
         } | null)
       | ({
           relationTo: 'posts';
