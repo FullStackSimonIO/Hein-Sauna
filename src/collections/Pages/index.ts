@@ -19,6 +19,9 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { Archive } from '@/block-templates/ArchiveBlock/config'
 import Header64 from '@/block-templates/Header/Header64/config'
+import CategoryPreviews from '@/blocks/CategoryPreview/config'
+import Testimonial21 from '@/blocks/Testimonial/Testimonial21/config'
+import CTA1 from '@/block-templates/CTA/CTA1/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -81,6 +84,9 @@ export const Pages: CollectionConfig<'pages'> = {
               blocks: [
                 Archive,
                 Header64,
+                CategoryPreviews,
+                Testimonial21,
+                CTA1,
                 /* PLOP_BLOCKS */
               ], // ! HIER DIE CONFIG DES BLOCKS IMPORTIEREN
               required: true,

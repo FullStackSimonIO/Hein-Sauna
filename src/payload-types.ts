@@ -196,7 +196,48 @@ export interface Page {
         }[]
       | null;
   };
-  layout: (ArchiveBlock | Header64)[];
+  layout: (
+    | ArchiveBlock
+    | Header64
+    | {
+        title?: string | null;
+        /**
+         * Optionaler Text oberhalb der Kachel-Grid
+         */
+        intro?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        /**
+         * Die ausgewählten Kategorien werden als Kacheln angezeigt
+         */
+        categories?:
+          | {
+              /**
+               * Wähle eine Sauna-Kategorie aus
+               */
+              category: (number | Category)[];
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'categoryPreviews';
+      }
+    | Testimonial21
+    | CTA1
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -363,7 +404,7 @@ export interface Category {
    */
   type: 'sauna' | 'blog';
   /**
-   * Wird in der URL verwendet, z.B. `/saunas/premium-sauna`
+   * Wird in der URL verwendet, z.B. `/saunen/premium-sauna`
    */
   slug: string;
   /**
@@ -506,6 +547,164 @@ export interface Header64 {
   id?: string | null;
   blockName?: string | null;
   blockType: 'header64';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Testimonial21".
+ */
+export interface Testimonial21 {
+  /**
+   * Hauptüberschrift für die Testimonial-Sektion.
+   */
+  heading: string;
+  /**
+   * Optionaler Einführungstext unter der Überschrift. Unterstützt Formatierungen.
+   */
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Füge mindestens ein Testimonial hinzu.
+   */
+  testimonials: {
+    /**
+     * Hier das Testimonial-Zitat eingeben. Unterstützt Formatierungen.
+     */
+    quote: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    /**
+     * Bewertung in Sternen (1–5).
+     */
+    numberOfStars: number;
+    /**
+     * Optional: Bild der Person, die das Testimonial gegeben hat.
+     */
+    avatar?: (number | null) | Media;
+    /**
+     * Name der Person für das Testimonial.
+     */
+    name: string;
+    /**
+     * Berufsbezeichnung der Person.
+     */
+    position?: string | null;
+    /**
+     * Name des Unternehmens der Person.
+     */
+    companyName?: string | null;
+    id?: string | null;
+  }[];
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'test21';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTA1".
+ */
+export interface CTA1 {
+  /**
+   * Hauptüberschrift, die den Nutzer zum Klicken animiert.
+   */
+  title: string;
+  /**
+   * Kurzer erläuternder Text unterhalb der Überschrift. Unterstützt Formatierungen.
+   */
+  richText: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Optionales Bild oder Icon neben dem Text. In der Media-Collection anlegen und hier auswählen.
+   */
+  media?: (number | null) | Media;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cta1';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -923,6 +1122,22 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         archive?: T | ArchiveBlockSelect<T>;
         header64?: T | Header64Select<T>;
+        categoryPreviews?:
+          | T
+          | {
+              title?: T;
+              intro?: T;
+              categories?:
+                | T
+                | {
+                    category?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        test21?: T | Testimonial21Select<T>;
+        cta1?: T | CTA1Select<T>;
       };
   meta?:
     | T
@@ -959,6 +1174,68 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
 export interface Header64Select<T extends boolean = true> {
   title?: T;
   richText?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Testimonial21_select".
+ */
+export interface Testimonial21Select<T extends boolean = true> {
+  heading?: T;
+  richText?: T;
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        numberOfStars?: T;
+        avatar?: T;
+        name?: T;
+        position?: T;
+        companyName?: T;
+        id?: T;
+      };
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTA1_select".
+ */
+export interface CTA1Select<T extends boolean = true> {
+  title?: T;
+  richText?: T;
+  media?: T;
   links?:
     | T
     | {

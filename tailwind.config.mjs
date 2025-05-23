@@ -77,6 +77,8 @@ const config = {
         heading: 'var(--heading)',
         accent: 'var(--accent)',
         border: 'hsl(var(--border))',
+        headingDark: 'var(--heading-dark)',
+        paragraphDark: 'var(--paragraph-dark)',
       },
       keyframes: {
         'accordion-down': {

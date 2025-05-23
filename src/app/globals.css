@@ -86,10 +86,12 @@
 
 @layer base {
   :root {
-    --background: #eeeeee;
+    --background: #e8d7ca;
     --heading: #ffffff;
     --paragraph: #eeeeee;
-    --accent: #07be60;
+    --accent: #714f3c;
+    --heading-dark: #000000;
+    --paragraph-dark: #374151;
   }
 }
 

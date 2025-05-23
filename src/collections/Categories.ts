@@ -2,7 +2,7 @@
 import type { CollectionConfig } from 'payload'
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
-import { slugField } from '@/fields/slug'
+
 import {
   FixedToolbarFeature,
   HeadingFeature,
@@ -57,7 +57,7 @@ export const Categories: CollectionConfig = {
       required: true,
       unique: true,
       admin: {
-        description: 'Wird in der URL verwendet, z.B. `/saunas/premium-sauna`',
+        description: 'Wird in der URL verwendet, z.B. `/saunen/premium-sauna`',
       },
     },
     {

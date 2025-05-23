@@ -4,10 +4,16 @@ import React, { Fragment } from 'react'
 import type { Page } from '@/payload-types'
 import { ArchiveBlock } from '@/block-templates/ArchiveBlock/Component'
 import { Header64 } from './Header/Header64/Component'
+import { CategoryPreviewsBlock } from './CategoryPreview/Component'
+import { Testimonial21 } from './Testimonial/Testimonial21/Component'
+import { CTA1 } from './CTA/CTA1/Component'
 
 const blockComponents = {
   header64: Header64,
   archive: ArchiveBlock,
+  categoryPreviews: CategoryPreviewsBlock,
+  test21: Testimonial21,
+  cta1: CTA1,
   /* PLOP_EXPORTS */
 } // ! Block Komponenten hier importieren
 

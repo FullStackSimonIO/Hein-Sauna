@@ -16,6 +16,13 @@ const Header64: Block = {
   },
   fields: [
     {
+      name: 'id',
+      type: 'text',
+      admin: {
+        hidden: true,
+      },
+    },
+    {
       name: 'title',
       type: 'text',
       label: 'Titel',

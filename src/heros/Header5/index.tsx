@@ -33,11 +33,12 @@ export const Header5: React.FC<Page['hero']> = ({ title, richText, links, media 
             <div className="mt-6 flex flex-wrap justify-center gap-4 md:mt-8">
               {Array.isArray(links) && links.length > 0 && (
                 <ul className="flex justify-center gap-4">
-                  {links.map(({ link }, i) => (
-                    <li key={i}>
-                      <CMSLink {...link} />
-                    </li>
-                  ))}
+                  {links &&
+                    links.map(({ link }, i) => (
+                      <li key={i}>
+                        <CMSLink {...link} />
+                      </li>
+                    ))}
                 </ul>
               )}
             </div>

@@ -7,6 +7,7 @@ import '../globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import SmoothScroll from '@/components/SmoothScroll'
 import { draftMode } from 'next/headers'
+import { Banner } from '@/components/Banner'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -19,6 +20,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <SmoothScroll>
+          <Banner />
           {children}
           <Footer />
         </SmoothScroll>
