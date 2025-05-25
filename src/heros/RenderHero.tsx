@@ -19,10 +19,10 @@ import { Header77 } from './Header77'
 const heroes = {
   header1: Header1,
   header5: Header5,
+  header9: Header9,
   /*highImpact: HighImpactHero,
   lowImpact: LowImpactHero,
   mediumImpact: MediumImpactHero,
-  header9: Header9,
   header19: Header19,
   header26: Header26,
   header30: Header30,

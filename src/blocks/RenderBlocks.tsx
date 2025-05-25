@@ -7,6 +7,9 @@ import { Header64 } from './Header/Header64/Component'
 import { CategoryPreviewsBlock } from './CategoryPreview/Component'
 import { Testimonial21 } from './Testimonial/Testimonial21/Component'
 import { CTA1 } from './CTA/CTA1/Component'
+import AccessoryPreviewsBlock from './AccessoriesPreview/Component'
+import { Layout348 } from './Layout/Layout348/Component'
+import { Faq1 } from './FAQ/FAQ1/Component'
 
 const blockComponents = {
   header64: Header64,
@@ -14,6 +17,9 @@ const blockComponents = {
   categoryPreviews: CategoryPreviewsBlock,
   test21: Testimonial21,
   cta1: CTA1,
+  accessoryPreviews: AccessoryPreviewsBlock,
+  layout348: Layout348,
+  faq1: Faq1,
   /* PLOP_EXPORTS */
 } // ! Block Komponenten hier importieren
 

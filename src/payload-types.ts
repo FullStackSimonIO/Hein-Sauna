@@ -68,6 +68,7 @@ export interface Config {
   collections: {
     pages: Page;
     saunas: Sauna;
+    accessories: Accessory;
     messages: Message;
     posts: Post;
     media: Media;
@@ -84,6 +85,7 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     saunas: SaunasSelect<false> | SaunasSelect<true>;
+    accessories: AccessoriesSelect<false> | AccessoriesSelect<true>;
     messages: MessagesSelect<false> | MessagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -148,7 +150,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'header1' | 'header5';
+    type: 'none' | 'header1' | 'header5' | 'header9';
     title: string;
     richText?: {
       root: {
@@ -237,6 +239,41 @@ export interface Page {
       }
     | Testimonial21
     | CTA1
+    | {
+        title?: string | null;
+        /**
+         * Optionaler Text oberhalb der Produkt-Kacheln
+         */
+        intro?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        /**
+         * Diese Produkte werden als Kacheln angezeigt
+         */
+        accessories?:
+          | {
+              accessory: number | Accessory;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'accessoryPreviews';
+      }
+    | Layout348
+    | FAQ1
   )[];
   meta?: {
     title?: string | null;
@@ -402,7 +439,7 @@ export interface Category {
   /**
    * Wofür wird diese Kategorie verwendet?
    */
-  type: 'sauna' | 'blog';
+  type: 'sauna' | 'blog' | 'accessory';
   /**
    * Wird in der URL verwendet, z.B. `/saunen/premium-sauna`
    */
@@ -708,6 +745,304 @@ export interface CTA1 {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accessories".
+ */
+export interface Accessory {
+  id: number;
+  title: string;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Preis in Euro (z.B. 29.99)
+   */
+  oldPrice: number;
+  /**
+   * Aktueller Preis in Euro (z.B. 19.99)
+   */
+  newPrice?: number | null;
+  image: number | Media;
+  categories: (number | Category)[];
+  hero: {
+    type: 'none' | 'header1' | 'header5' | 'header9';
+    title: string;
+    richText?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose how the link should be rendered.
+             */
+            appearance?: ('default' | 'outline') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    media?:
+      | {
+          image: number | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  layout: (
+    | ArchiveBlock
+    | Header64
+    | {
+        title?: string | null;
+        /**
+         * Optionaler Text oberhalb der Kachel-Grid
+         */
+        intro?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        /**
+         * Die ausgewählten Kategorien werden als Kacheln angezeigt
+         */
+        categories?:
+          | {
+              /**
+               * Wähle eine Sauna-Kategorie aus
+               */
+              category: (number | Category)[];
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'categoryPreviews';
+      }
+    | Testimonial21
+    | CTA1
+  )[];
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  publishedAt?: string | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Layout348".
+ */
+export interface Layout348 {
+  /**
+   * Füge 1–n Inhaltsblöcke mit Tagline, Überschrift etc. hinzu.
+   */
+  contents: {
+    /**
+     * Optionaler kurzer Begriff über der Überschrift.
+     */
+    tagline?: string | null;
+    /**
+     * Hauptüberschrift für diesen Inhaltsblock.
+     */
+    heading: string;
+    /**
+     * Ausführlicher Text. Unterstützt Fettschrift, Listen, Links etc.
+     */
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    links?:
+      | {
+          link: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?:
+              | ({
+                  relationTo: 'pages';
+                  value: number | Page;
+                } | null)
+              | ({
+                  relationTo: 'posts';
+                  value: number | Post;
+                } | null);
+            url?: string | null;
+            label: string;
+            /**
+             * Choose how the link should be rendered.
+             */
+            appearance?: ('default' | 'outline') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Optionales Bild oder Video zur Veranschaulichung.
+     */
+    media?: (number | null) | Media;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'layout348';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FAQ1".
+ */
+export interface FAQ1 {
+  /**
+   * Hauptüberschrift für den FAQ-Bereich.
+   */
+  heading: string;
+  /**
+   * Optionaler Einleitungstext oberhalb der Fragen. Unterstützt Formatierungen.
+   */
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Füge mindestens eine Frage mit Antwort hinzu.
+   */
+  questions: {
+    /**
+     * Formuliere hier die Frage.
+     */
+    question: string;
+    /**
+     * Antwort auf die Frage. Unterstützt Formatierungen.
+     */
+    richText?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    id?: string | null;
+  }[];
+  /**
+   * Überschrift im Footer-Bereich unter den FAQs.
+   */
+  footerHeading?: string | null;
+  /**
+   * Beschreibungstext im Footer unter der Footer-Überschrift.
+   */
+  footerDescription?: string | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faq1';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "saunas".
  */
 export interface Sauna {
@@ -773,7 +1108,7 @@ export interface Sauna {
     };
   };
   hero: {
-    type: 'none' | 'header1' | 'header5';
+    type: 'none' | 'header1' | 'header5' | 'header9';
     title: string;
     richText?: {
       root: {
@@ -1010,6 +1345,10 @@ export interface PayloadLockedDocument {
         value: number | Sauna;
       } | null)
     | ({
+        relationTo: 'accessories';
+        value: number | Accessory;
+      } | null)
+    | ({
         relationTo: 'messages';
         value: number | Message;
       } | null)
@@ -1138,6 +1477,22 @@ export interface PagesSelect<T extends boolean = true> {
             };
         test21?: T | Testimonial21Select<T>;
         cta1?: T | CTA1Select<T>;
+        accessoryPreviews?:
+          | T
+          | {
+              title?: T;
+              intro?: T;
+              accessories?:
+                | T
+                | {
+                    accessory?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        layout348?: T | Layout348Select<T>;
+        faq1?: T | FAQ1Select<T>;
       };
   meta?:
     | T
@@ -1256,6 +1611,72 @@ export interface CTA1Select<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Layout348_select".
+ */
+export interface Layout348Select<T extends boolean = true> {
+  contents?:
+    | T
+    | {
+        tagline?: T;
+        heading?: T;
+        description?: T;
+        links?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                    appearance?: T;
+                  };
+              id?: T;
+            };
+        media?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FAQ1_select".
+ */
+export interface FAQ1Select<T extends boolean = true> {
+  heading?: T;
+  richText?: T;
+  questions?:
+    | T
+    | {
+        question?: T;
+        richText?: T;
+        id?: T;
+      };
+  footerHeading?: T;
+  footerDescription?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "saunas_select".
  */
 export interface SaunasSelect<T extends boolean = true> {
@@ -1317,6 +1738,81 @@ export interface SaunasSelect<T extends boolean = true> {
   image?: T;
   description?: T;
   publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accessories_select".
+ */
+export interface AccessoriesSelect<T extends boolean = true> {
+  title?: T;
+  richText?: T;
+  oldPrice?: T;
+  newPrice?: T;
+  image?: T;
+  categories?: T;
+  hero?:
+    | T
+    | {
+        type?: T;
+        title?: T;
+        richText?: T;
+        links?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                    appearance?: T;
+                  };
+              id?: T;
+            };
+        media?:
+          | T
+          | {
+              image?: T;
+              id?: T;
+            };
+      };
+  layout?:
+    | T
+    | {
+        archive?: T | ArchiveBlockSelect<T>;
+        header64?: T | Header64Select<T>;
+        categoryPreviews?:
+          | T
+          | {
+              title?: T;
+              intro?: T;
+              categories?:
+                | T
+                | {
+                    category?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        test21?: T | Testimonial21Select<T>;
+        cta1?: T | CTA1Select<T>;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  publishedAt?: T;
+  slug?: T;
+  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -1606,6 +2102,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
+  logo?: (number | null) | Media;
   navItems?:
     | {
         link: {
@@ -1626,6 +2123,47 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  bottomLinks?:
+    | {
+        icon?: string | null;
+        label?: string | null;
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  ctaButton: {
+    label?: string | null;
+    link: {
+      type?: ('reference' | 'custom') | null;
+      newTab?: boolean | null;
+      reference?:
+        | ({
+            relationTo: 'pages';
+            value: number | Page;
+          } | null)
+        | ({
+            relationTo: 'posts';
+            value: number | Post;
+          } | null);
+      url?: string | null;
+      label: string;
+    };
+  };
+  disclaimer?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1663,6 +2201,7 @@ export interface Footer {
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  logo?: T;
   navItems?:
     | T
     | {
@@ -1677,6 +2216,37 @@ export interface HeaderSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  bottomLinks?:
+    | T
+    | {
+        icon?: T;
+        label?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  ctaButton?:
+    | T
+    | {
+        label?: T;
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+      };
+  disclaimer?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -1720,6 +2290,10 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'saunas';
           value: number | Sauna;
+        } | null)
+      | ({
+          relationTo: 'accessories';
+          value: number | Accessory;
         } | null)
       | ({
           relationTo: 'posts';

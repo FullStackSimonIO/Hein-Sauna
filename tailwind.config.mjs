@@ -16,12 +16,12 @@ const config = {
   ],
   presets: [relumePreset],
   fontFamily: {
-    //heading: ['var(--font-heading)', 'sans-serif'],
-    //paragraph: ['var(--font-paragraph)', 'sans-serif'],
-    // monoton: ['var(--font-monoton)', 'sans-serif'],
+    heading: ['var(--font-heading)', 'sans-serif'],
+    paragraph: ['var(--font-paragraph)', 'sans-serif'],
   },
   //darkMode: ['selector', '[data-theme="dark"]'],
-  plugins: [tailwindcssAnimate, typography],
+
+  plugins: [tailwindcssAnimate, typography, '@tailwindcss/line-clamp'],
   prefix: '',
   safelist: [
     'lg:col-span-4',

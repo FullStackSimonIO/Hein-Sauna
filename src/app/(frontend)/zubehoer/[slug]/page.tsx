@@ -13,8 +13,8 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
-  const pages = await payload.find({
-    collection: 'pages',
+  const accessories = await payload.find({
+    collection: 'accessories',
     draft: false,
     limit: 1000,
     overrideAccess: false,
@@ -25,7 +25,7 @@ export async function generateStaticParams() {
     },
   })
 
-  const params = pages.docs
+  const params = accessories.docs
     ?.filter((doc) => {
       return doc.slug !== 'home'
     })
@@ -45,7 +45,7 @@ type Args = {
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = 'home' } = await paramsPromise
-  const url = '/' + slug
+  const url = '/zubehoer/' + slug
 
   const page = await queryPageBySlug({
     slug,
@@ -86,7 +86,7 @@ const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
   const payload = await getPayload({ config: configPromise })
 
   const result = await payload.find({
-    collection: 'pages',
+    collection: 'accessories',
     draft,
     limit: 1,
     pagination: false,

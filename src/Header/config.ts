@@ -1,7 +1,5 @@
 import type { GlobalConfig } from 'payload'
-
 import { link } from '@/fields/link'
-import { revalidateHeader } from './hooks/revalidateHeader'
 
 export const Header: GlobalConfig = {
   slug: 'header',
@@ -10,6 +8,12 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
+      name: 'logo',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Logo',
+    },
+    {
       name: 'navItems',
       type: 'array',
       fields: [
@@ -17,7 +21,7 @@ export const Header: GlobalConfig = {
           appearances: false,
         }),
       ],
-      maxRows: 6,
+      maxRows: 10,
       admin: {
         initCollapsed: true,
         components: {
@@ -25,8 +29,43 @@ export const Header: GlobalConfig = {
         },
       },
     },
+    {
+      name: 'bottomLinks',
+      label: 'Infobox Links (z. B. Kontakt, Karriere etc.)',
+      type: 'array',
+      minRows: 4,
+      maxRows: 4,
+      fields: [
+        {
+          name: 'icon',
+          label: 'Icon (Heroicon, Lucide, etc.)',
+          type: 'text',
+        },
+        {
+          name: 'label',
+          label: 'Text',
+          type: 'text',
+        },
+        link({ appearances: false }),
+      ],
+    },
+    {
+      name: 'ctaButton',
+      label: 'CTA Button',
+      type: 'group',
+      fields: [
+        {
+          name: 'label',
+          label: 'Button Text',
+          type: 'text',
+        },
+        link({ appearances: false }),
+      ],
+    },
+    {
+      name: 'disclaimer',
+      label: 'Kleiner Hinweis unter dem Button',
+      type: 'text',
+    },
   ],
-  hooks: {
-    afterChange: [revalidateHeader],
-  },
 }

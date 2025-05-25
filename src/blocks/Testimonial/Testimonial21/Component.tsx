@@ -23,10 +23,10 @@ export const Testimonial21: React.FC<Testimonial21Props> = ({
   return (
     <section id="testimonial-21" className="overflow-hidden py-16 md:py-24 lg:py-28">
       <div className="container mb-12 max-w-lg px-[5%] text-center md:mb-18 lg:mb-20">
-        <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-accent">
+        <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-headingDark">
           {heading}
         </h1>
-        {richText && <RichText data={richText} />}
+        {richText && <RichText className="text-paragraphDark" data={richText} />}
       </div>
       <div className="flex animate-loop-testimonials">
         {renderTestimonials()}
@@ -61,9 +61,9 @@ const TestimonialCard: React.FC<{ testimonial: Testimonial21Props['testimonials'
         />
       )}
       <div>
-        <p className="font-semibold text-accent">{testimonial.name}</p>
+        <p className="font-semibold text-headingDark">{testimonial.name}</p>
         <p>
-          <span>{testimonial.position}</span>
+          <span className="text-paragraphDark">{testimonial.position}</span>
           {testimonial.companyName && `, ${testimonial.companyName}`}
         </p>
       </div>

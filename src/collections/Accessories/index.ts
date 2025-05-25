@@ -5,7 +5,6 @@ import { hero } from '@/heros/config'
 import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
-import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
 //import { Contact1 } from '@/blocks/contact/Contact1/config'
 /* PLOP_IMPORT_BLOCK_CONFIG */
@@ -22,15 +21,19 @@ import Header64 from '@/block-templates/Header/Header64/config'
 import CategoryPreviews from '@/blocks/CategoryPreview/config'
 import Testimonial21 from '@/blocks/Testimonial/Testimonial21/config'
 import CTA1 from '@/block-templates/CTA/CTA1/config'
-import AccessoryPreviews from '@/blocks/AccessoriesPreview/config'
-import Layout348 from '@/blocks/Layout/Layout348/config'
-import FAQ1 from '@/blocks/FAQ/FAQ1/config'
+import {
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
+import { revalidateDelete, revalidatePage } from '../Pages/hooks/revalidatePage'
 
-export const Pages: CollectionConfig<'pages'> = {
-  slug: 'pages',
+export const Accessories: CollectionConfig<'accessories'> = {
+  slug: 'accessories',
   labels: {
-    singular: 'Seite',
-    plural: 'Seiten',
+    singular: 'Zubehör',
+    plural: 'Zubehör',
   },
   access: {
     create: authenticated,
@@ -44,6 +47,11 @@ export const Pages: CollectionConfig<'pages'> = {
   defaultPopulate: {
     title: true,
     slug: true,
+    richText: true,
+    oldPrice: true,
+    newPrice: true,
+    image: true,
+    categories: true,
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
@@ -73,6 +81,53 @@ export const Pages: CollectionConfig<'pages'> = {
       required: true,
     },
     {
+      name: 'richText',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ]
+        },
+      }),
+      label: 'Artikel-Beschreibung',
+    },
+    {
+      name: 'oldPrice',
+      type: 'number',
+      label: 'Preis (UVP)',
+      required: true,
+      admin: {
+        description: 'Preis in Euro (z.B. 29.99)',
+      },
+    },
+    {
+      name: 'newPrice',
+      type: 'number',
+      label: 'Preis (Aktuell)',
+      required: false,
+      admin: {
+        description: 'Aktueller Preis in Euro (z.B. 19.99)',
+      },
+    },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+    {
+      name: 'categories',
+      type: 'relationship',
+      relationTo: 'categories',
+      hasMany: true,
+      required: true,
+    },
+
+    {
       type: 'tabs',
       tabs: [
         {
@@ -90,9 +145,6 @@ export const Pages: CollectionConfig<'pages'> = {
                 CategoryPreviews,
                 Testimonial21,
                 CTA1,
-                AccessoryPreviews,
-                Layout348,
-                FAQ1,
                 /* PLOP_BLOCKS */
               ], // ! HIER DIE CONFIG DES BLOCKS IMPORTIEREN
               required: true,

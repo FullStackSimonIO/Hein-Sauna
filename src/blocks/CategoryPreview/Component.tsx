@@ -25,9 +25,7 @@ export const CategoryPreviewsBlock: React.FC<Props> = ({ title, intro, categorie
       {/* Überschrift + Intro */}
       <div className="mx-auto max-w-3xl text-center">
         {title && (
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-headingDark font-bold mb-4">
-            {title}
-          </h2>
+          <h2 className="text-3xl md:text-7xl lg:text-10xl text-accent font-bold mb-4">{title}</h2>
         )}
         {intro && (
           <RichText
@@ -86,7 +84,9 @@ export const CategoryPreviewsBlock: React.FC<Props> = ({ title, intro, categorie
 
             {/* Text-Fußbereich */}
             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 via-transparent to-transparent">
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">{category.name}</h3>
+              <h3 className="text-xl md:text-5xl font-semibold text-white mb-2 uppercase underline">
+                {category.name}
+              </h3>
               {category.description && (
                 <RichText
                   className="text-sm text-white/90 line-clamp-3 mb-4"

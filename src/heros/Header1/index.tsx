@@ -20,7 +20,9 @@ export const Header1: React.FC<Page['hero']> = ({ links, media, richText, title 
       <div className="container">
         <div className="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
           <div>
-            <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl">{title}</h1>
+            <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl text-accent lg:text-10xl">
+              {title}
+            </h1>
             {richText && <RichText className="mb-6" data={richText} enableGutter={false} />}
             <div className="mt-6 flex flex-wrap gap-4 md:mt-8">
               {Array.isArray(links) && links.length > 0 && (
@@ -38,7 +40,11 @@ export const Header1: React.FC<Page['hero']> = ({ links, media, richText, title 
           </div>
           <div>
             {Array.isArray(media) && media.length > 0 && (
-              <Media imgClassName="-z-10 object-cover" priority resource={media[0]!.image} />
+              <Media
+                imgClassName="-z-10  shadow-lg rounded-2xl"
+                priority
+                resource={media[0]!.image}
+              />
             )}
           </div>
         </div>

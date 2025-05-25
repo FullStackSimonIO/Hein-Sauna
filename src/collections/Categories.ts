@@ -44,6 +44,8 @@ export const Categories: CollectionConfig = {
       options: [
         { label: 'Sauna-Kategorie', value: 'sauna' },
         { label: 'Blog-Kategorie', value: 'blog' },
+        { label: 'Zubehör-Kategorie', value: 'accessory' },
+        // { label: 'Event-Kategorie', value: 'event' },
         // Weitere Typen bei Bedarf
       ],
       admin: {

@@ -1,3 +1,4 @@
+import { ExpandableRichText } from '@/components/ExpandableRichText'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
@@ -20,7 +21,7 @@ export const Header9: React.FC<Page['hero']> = ({ title, richText, links, media 
               {title}
             </h1>
             <div>
-              {richText && <RichText className="mb-6" data={richText} enableGutter={false} />}
+              {richText && <ExpandableRichText className="mb-6 " data={richText} />}
               <div className="mt-6 flex flex-wrap gap-4 md:mt-8">
                 {Array.isArray(links) && links.length > 0 && (
                   <ul className="flex md:justify-center gap-4">

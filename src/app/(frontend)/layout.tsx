@@ -8,6 +8,8 @@ import { getServerSideURL } from '@/utilities/getURL'
 import SmoothScroll from '@/components/SmoothScroll'
 import { draftMode } from 'next/headers'
 import { Banner } from '@/components/Banner'
+import { oswald, roboto } from '@/fonts'
+import { Header } from '@/Header/Component'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -18,9 +20,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
-      <body>
+      <body className={`${roboto.variable} ${oswald.variable}`}>
         <SmoothScroll>
           <Banner />
+          <Header />
           {children}
           <Footer />
         </SmoothScroll>
