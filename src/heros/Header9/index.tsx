@@ -17,7 +17,7 @@ export const Header9: React.FC<Page['hero']> = ({ title, richText, links, media 
       <div className="px-[5%]">
         <div className="container">
           <div className="grid grid-rows-1 items-start gap-y-5 py-12 md:grid-cols-2 md:gap-x-12 md:gap-y-8 md:py-18 lg:gap-x-20 lg:gap-y-16 lg:py-20">
-            <h1 className="text-6xl font-bold text-text-primary md:text-9xl lg:text-10xl">
+            <h1 className="text-6xl font-bold text-headingDark md:text-9xl lg:text-10xl">
               {title}
             </h1>
             <div>

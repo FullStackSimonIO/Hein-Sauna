@@ -18,7 +18,7 @@ export const Faq1: React.FC<FAQ1Props> = ({
     <section id="faq-1" className="px-[5%] py-16 md:py-24 lg:py-28">
       <div className="container max-w-lg">
         <div className="rb-12 mb-12 text-center md:mb-18 lg:mb-20">
-          <h2 className="rb-5 mb-5 text-5xl text-accent font-bold md:mb-6 md:text-7xl lg:text-8xl">
+          <h2 className="rb-5 mb-5 text-5xl text-headingDark font-bold md:mb-6 md:text-7xl lg:text-8xl">
             {heading}
           </h2>
           {richText && (

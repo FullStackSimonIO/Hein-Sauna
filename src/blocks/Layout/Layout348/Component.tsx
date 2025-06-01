@@ -55,7 +55,7 @@ export const Layout348: React.FC<Layout348Props> = ({ contents }) => {
                   {content.tagline}
                 </Badge>
 
-                <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-accent">
+                <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-headingDark">
                   {content.heading}
                 </h2>
                 {content.description && <RichText data={content.description} />}

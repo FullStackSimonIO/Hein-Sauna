@@ -13,7 +13,7 @@ type Props = {
 const AccessoryPreviewsBlock: React.FC<Props> = ({ title, accessories = [] }) => (
   <section className="px-6 py-16 bg-background">
     {title && (
-      <h2 className="text-4xl md:text-5xl lg:text-6xl text-accent font-bold text-center mb-12">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl text-headingDark font-bold text-center mb-12">
         {title}
       </h2>
     )}

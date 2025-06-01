@@ -150,7 +150,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'header1' | 'header5' | 'header9';
+    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36';
     title: string;
     richText?: {
       root: {
@@ -274,6 +274,10 @@ export interface Page {
       }
     | Layout348
     | FAQ1
+    | CTA15
+    | Team18
+    | Timeline17
+    | Layout29
   )[];
   meta?: {
     title?: string | null;
@@ -776,7 +780,7 @@ export interface Accessory {
   image: number | Media;
   categories: (number | Category)[];
   hero: {
-    type: 'none' | 'header1' | 'header5' | 'header9';
+    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36';
     title: string;
     richText?: {
       root: {
@@ -1043,6 +1047,277 @@ export interface FAQ1 {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTA15".
+ */
+export interface CTA15 {
+  /**
+   * Kurze, prägnante Überschrift für den CTA.
+   */
+  title: string;
+  /**
+   * Optionaler erläuternder Text unterhalb der Überschrift. Unterstützt Fettschrift, Listen, Links etc.
+   */
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Wähle ein Bild oder eine Grafik für den Hintergrund aus der Media-Collection.
+   */
+  media: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cta15';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Team18".
+ */
+export interface Team18 {
+  /**
+   * Optionaler kurzer Text über dem Team-Bereich.
+   */
+  tagline?: string | null;
+  /**
+   * Hauptüberschrift für die Team-Sektion.
+   */
+  heading: string;
+  /**
+   * Optionaler Einführungstext. Unterstützt Formatierungen.
+   */
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Füge mindestens ein Team-Mitglied hinzu.
+   */
+  teamMembers: {
+    /**
+     * Optional: Foto des Team-Mitglieds.
+     */
+    image?: (number | null) | Media;
+    /**
+     * Name des Team-Mitglieds.
+     */
+    name: string;
+    /**
+     * Berufsbezeichnung des Team-Mitglieds.
+     */
+    jobTitle: string;
+    /**
+     * Optionaler kurzer Steckbrief zum Team-Mitglied.
+     */
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Füge bis zu 3 Social-Media-Links hinzu.
+     */
+    socialLinks?:
+      | {
+          /**
+           * Wähle die Social-Media-Plattform aus.
+           */
+          platform: 'dribbble' | 'linkedin' | 'twitter';
+          /**
+           * Link zum Social-Media-Profil.
+           */
+          href: string;
+          id?: string | null;
+        }[]
+      | null;
+    id?: string | null;
+  }[];
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'team18';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Timeline17".
+ */
+export interface Timeline17 {
+  tagline?: string | null;
+  heading: string;
+  subheading?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  steps: {
+    title: string;
+    description: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'timeline17';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Layout29".
+ */
+export interface Layout29 {
+  features?:
+    | {
+        media: number | Media;
+        heading: string;
+        description: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  media?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'layout29';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "saunas".
  */
 export interface Sauna {
@@ -1108,7 +1383,7 @@ export interface Sauna {
     };
   };
   hero: {
-    type: 'none' | 'header1' | 'header5' | 'header9';
+    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36';
     title: string;
     richText?: {
       root: {
@@ -1493,6 +1768,10 @@ export interface PagesSelect<T extends boolean = true> {
             };
         layout348?: T | Layout348Select<T>;
         faq1?: T | FAQ1Select<T>;
+        cta15?: T | CTA15Select<T>;
+        team18?: T | Team18Select<T>;
+        timeline17?: T | Timeline17Select<T>;
+        layout29?: T | Layout29Select<T>;
       };
   meta?:
     | T
@@ -1672,6 +1951,124 @@ export interface FAQ1Select<T extends boolean = true> {
             };
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CTA15_select".
+ */
+export interface CTA15Select<T extends boolean = true> {
+  title?: T;
+  richText?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  media?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Team18_select".
+ */
+export interface Team18Select<T extends boolean = true> {
+  tagline?: T;
+  heading?: T;
+  description?: T;
+  teamMembers?:
+    | T
+    | {
+        image?: T;
+        name?: T;
+        jobTitle?: T;
+        description?: T;
+        socialLinks?:
+          | T
+          | {
+              platform?: T;
+              href?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Timeline17_select".
+ */
+export interface Timeline17Select<T extends boolean = true> {
+  tagline?: T;
+  heading?: T;
+  subheading?: T;
+  steps?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Layout29_select".
+ */
+export interface Layout29Select<T extends boolean = true> {
+  features?:
+    | T
+    | {
+        media?: T;
+        heading?: T;
+        description?: T;
+        id?: T;
+      };
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  media?: T;
   id?: T;
   blockName?: T;
 }

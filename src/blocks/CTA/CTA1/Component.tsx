@@ -13,7 +13,7 @@ export const CTA1: React.FC<CTA1Props> = ({ title, richText, media, links }) => 
         <div className="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
           {/* ✅ Linke Seite mit Text */}
           <div>
-            <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-accent">
+            <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-headingDark">
               {title}
             </h2>
             {richText && (

@@ -35,6 +35,10 @@ export const hero: Field = {
           label: 'Header 9',
           value: 'header9',
         },
+        {
+          label: 'Header 36',
+          value: 'header36',
+        },
       ],
       required: true,
     },

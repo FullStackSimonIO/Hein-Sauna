@@ -10,6 +10,10 @@ import { CTA1 } from './CTA/CTA1/Component'
 import AccessoryPreviewsBlock from './AccessoriesPreview/Component'
 import { Layout348 } from './Layout/Layout348/Component'
 import { Faq1 } from './FAQ/FAQ1/Component'
+import { CTA15 } from './CTA/CTA15/Component'
+import { Team18 } from './Team/Team18/Component'
+import { Timeline17 } from './Timeline/Component'
+import { Layout29 } from './Layout/Layout29/Component'
 
 const blockComponents = {
   header64: Header64,
@@ -20,6 +24,11 @@ const blockComponents = {
   accessoryPreviews: AccessoryPreviewsBlock,
   layout348: Layout348,
   faq1: Faq1,
+  cta15: CTA15,
+  team18: Team18,
+  timeline17: Timeline17,
+  layout29: Layout29,
+
   /* PLOP_EXPORTS */
 } // ! Block Komponenten hier importieren
 

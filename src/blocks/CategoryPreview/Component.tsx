@@ -25,7 +25,9 @@ export const CategoryPreviewsBlock: React.FC<Props> = ({ title, intro, categorie
       {/* Überschrift + Intro */}
       <div className="mx-auto max-w-3xl text-center">
         {title && (
-          <h2 className="text-3xl md:text-7xl lg:text-10xl text-accent font-bold mb-4">{title}</h2>
+          <h2 className="text-3xl md:text-7xl lg:text-10xl text-headingDark font-bold mb-4">
+            {title}
+          </h2>
         )}
         {intro && (
           <RichText

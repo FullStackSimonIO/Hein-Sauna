@@ -18,14 +18,17 @@ export const ExpandableRichText: React.FC<ExpandableRichTextProps> = ({
 }) => {
   const [expanded, setExpanded] = useState(false)
   const [needsToggle, setNeedsToggle] = useState(false)
+  const [collapsedHeight, setCollapsedHeight] = useState<number>(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const el = containerRef.current
     if (!el) return
+    const style = getComputedStyle(el)
+    const lineHeight = parseFloat(style.lineHeight)
     const fullHeight = el.scrollHeight
-    const lineHeight = parseFloat(getComputedStyle(el).lineHeight)
     const maxAllowed = lineHeight * initialLines
+    setCollapsedHeight(maxAllowed)
     setNeedsToggle(fullHeight > maxAllowed + 1)
   }, [data, initialLines])
 
@@ -34,16 +37,18 @@ export const ExpandableRichText: React.FC<ExpandableRichTextProps> = ({
       <div
         ref={containerRef}
         className={cn(
-          'text-gray-700 transition-[max-height] duration-300 ease-in-out overflow-hidden line-clamp-3',
-          expanded ? 'max-h-[2000px]' : `max-h-[calc(${initialLines}*1.6em)]`,
+          'text-gray-700 transition-max-height duration-300 ease-in-out overflow-hidden',
         )}
+        style={{
+          maxHeight: expanded ? `${containerRef.current?.scrollHeight}px` : `${collapsedHeight}px`,
+        }}
       >
         <RichText data={data} />
       </div>
       {needsToggle && (
         <button
           onClick={() => setExpanded((prev) => !prev)}
-          className="mt-2 inline-block text-sm font-medium text-accent hover:underline"
+          className="mt-2 ml-4 inline-block text-sm font-medium text-headingDark hover:underline"
         >
           {expanded ? 'Weniger anzeigen' : 'Mehr anzeigen'}
         </button>
