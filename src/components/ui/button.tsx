@@ -21,9 +21,9 @@ const buttonVariants = cva(
       variant: {
         default: 'bg-accent text-heading hover:scale-[1.02] hover:bg-accent/90',
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        ghost: 'hover:bg-card hover:text-accent-foreground',
+        ghost: 'border border-accent bg-transparent text-headingDark hover:scale-[1.02] ',
         link: 'text-primary items-start justify-start underline-offset-4 hover:underline',
-        outline: 'border border-accent bg-transparent text-heading scale-[1.02] ',
+        outline: 'border border-heading bg-transparent text-heading hover:scale-[1.02] ',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
       },
     },

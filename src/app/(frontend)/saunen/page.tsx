@@ -41,6 +41,7 @@ export default async function Page({
     draft: false,
     overrideAccess: false,
     pagination: false,
+    depth: 1,
     where: {
       category: { equals: category.id },
     },

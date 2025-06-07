@@ -10,6 +10,7 @@ import { Media } from '@/components/Media'
 import { CMSLink } from '@/components/Link'
 import { TrustBadge } from '@/components/TrustIcon'
 import { AnimateScrollIcon } from '@/components/AnimateScrollIcon'
+import { FadeIn } from '@/components/Animations/FadeIn'
 
 export const Header1: React.FC<Page['hero']> = ({ links, media, richText, title }) => {
   const { setHeaderTheme } = useHeaderTheme()
@@ -27,9 +28,11 @@ export const Header1: React.FC<Page['hero']> = ({ links, media, richText, title 
         <div className="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
           {/* Text-Column */}
           <div>
-            <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl text-headingDark">
-              {title}
-            </h1>
+            <FadeIn>
+              <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl text-headingDark">
+                {title}
+              </h1>
+            </FadeIn>
 
             {richText && (
               <RichText className="mb-6" data={richText} enableProse={true} enableGutter={false} />

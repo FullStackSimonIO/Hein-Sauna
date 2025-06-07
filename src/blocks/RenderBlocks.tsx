@@ -14,6 +14,9 @@ import { CTA15 } from './CTA/CTA15/Component'
 import { Team18 } from './Team/Team18/Component'
 import { Timeline17 } from './Timeline/Component'
 import { Layout29 } from './Layout/Layout29/Component'
+import { Gallery1 } from './Gallery/Gallery1/Component'
+import { ShowroomPreview } from './ShowroomPreview/Component'
+import Contact1 from './Contact/Contact1/Component'
 
 const blockComponents = {
   header64: Header64,
@@ -28,6 +31,9 @@ const blockComponents = {
   team18: Team18,
   timeline17: Timeline17,
   layout29: Layout29,
+  gallery1: Gallery1,
+  showroomPreview: ShowroomPreview,
+  contact1: Contact1,
 
   /* PLOP_EXPORTS */
 } // ! Block Komponenten hier importieren

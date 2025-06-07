@@ -25,7 +25,14 @@ export const CTA1: React.FC<CTA1Props> = ({ title, richText, media, links }) => 
                   {links &&
                     links.map(({ link }, i) => (
                       <li key={i}>
-                        <CMSLink {...link} />
+                        <CMSLink
+                          {...link}
+                          className={
+                            link.appearance === 'outline'
+                              ? 'border border-black text-backgroundDark px-4 py-2 rounded hover:text-backgroundDark '
+                              : ''
+                          }
+                        />
                       </li>
                     ))}
                 </ul>

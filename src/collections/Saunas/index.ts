@@ -191,6 +191,7 @@ export const Saunas: CollectionConfig<'saunas'> = {
             {
               name: 'layout',
               type: 'blocks',
+              required: false,
               blocks: [Archive /*, weitere Blocks hier*/],
               admin: { initCollapsed: true },
             },

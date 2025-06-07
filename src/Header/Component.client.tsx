@@ -107,7 +107,10 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
             className="fixed top-0 left-0 w-full h-screen bg-background z-[99] flex flex-col px-6 py-8 overflow-y-auto"
           >
             <div className="flex justify-end mb-6">
-              <button onClick={() => setIsMobileMenuOpen(false)} className="text-heading text-3xl">
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-headingDark text-3xl"
+              >
                 <FaTimes />
               </button>
             </div>
@@ -115,12 +118,12 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
             {data.logo && (
               <div className="flex justify-center mb-8 mt-4">
                 <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Media resource={data.logo} className="w-[140px] h-auto" />
+                  <Media resource={data.logo} className="w-[250px] h-auto" />
                 </Link>
               </div>
             )}
 
-            <div className="flex flex-col items-center justify-center space-y-6 text-center mb-10">
+            <div className="flex h-screen flex-col items-center justify-center space-y-6 text-center mb-10">
               {data.navItems?.map(({ link }, i) => {
                 const fixed = normalizeLink(link)
                 return (
@@ -128,7 +131,7 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
                     key={i}
                     {...fixed}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-heading text-lg font-medium"
+                    className="text-headingDark text-lg font-medium"
                   />
                 )
               })}
@@ -143,7 +146,7 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
                     <CMSLink
                       {...fixedCta}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="w-full block text-center rounded-full border-2 border-primary px-6 py-3 text-primary font-semibold hover:bg-primary hover:text-white transition-all"
+                      className="w-full h-screen block text-center items-center justify-center rounded-full border-2 border-primary px-6 py-3 text-primary font-semibold hover:bg-primary hover:text-white transition-all"
                     >
                       {data.ctaButton.label || 'Jetzt Angebot anfordern'}
                     </CMSLink>

@@ -29,6 +29,9 @@ import CTA15 from '@/blocks/CTA/CTA15/config'
 import Team18 from '@/blocks/Team/Team18/config'
 import { Timeline17 } from '@/blocks/Timeline/config'
 import Layout29 from '@/blocks/Layout/Layout29/config'
+import Gallery1 from '@/blocks/Gallery/Gallery1/config'
+import { ShowroomPreview } from '@/blocks/ShowroomPreview/config'
+import Contact1 from '@/block-templates/Contact/Contact1/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -101,6 +104,9 @@ export const Pages: CollectionConfig<'pages'> = {
                 Team18,
                 Timeline17,
                 Layout29,
+                Gallery1,
+                ShowroomPreview,
+                Contact1,
                 /* PLOP_BLOCKS */
               ], // ! HIER DIE CONFIG DES BLOCKS IMPORTIEREN
               required: true,

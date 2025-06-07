@@ -278,6 +278,9 @@ export interface Page {
     | Team18
     | Timeline17
     | Layout29
+    | Gallery1
+    | ShowroomPreview
+    | Contact1
   )[];
   meta?: {
     title?: string | null;
@@ -1318,6 +1321,129 @@ export interface Layout29 {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Gallery1".
+ */
+export interface Gallery1 {
+  /**
+   * Hauptüberschrift für den Galerie-Bereich.
+   */
+  heading: string;
+  /**
+   * Optionaler Beschreibungstext oberhalb der Galerie. Unterstützt Formatierungen.
+   */
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Füge mindestens ein Bild hinzu.
+   */
+  images: {
+    /**
+     * Wähle ein Bild aus der Media-Collection.
+     */
+    image: number | Media;
+    /**
+     * Optional: Verlinkung beim Klick auf das Bild.
+     */
+    url?: string | null;
+    id?: string | null;
+  }[];
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gallery1';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ShowroomPreview".
+ */
+export interface ShowroomPreview {
+  link: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'showroomPreview';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Contact1".
+ */
+export interface Contact1 {
+  /**
+   * Kleiner Hinweistext oberhalb der Überschrift.
+   */
+  tagline?: string | null;
+  /**
+   * Hauptüberschrift des Formulars.
+   */
+  heading: string;
+  /**
+   * Weiterführende Informationen oder Hinweise.
+   */
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Text und Styling für den Senden-Button.
+   */
+  button: {
+    /**
+     * Beschriftung des Buttons.
+     */
+    title: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contact1';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "saunas".
  */
 export interface Sauna {
@@ -1772,6 +1898,9 @@ export interface PagesSelect<T extends boolean = true> {
         team18?: T | Team18Select<T>;
         timeline17?: T | Timeline17Select<T>;
         layout29?: T | Layout29Select<T>;
+        gallery1?: T | Gallery1Select<T>;
+        showroomPreview?: T | ShowroomPreviewSelect<T>;
+        contact1?: T | Contact1Select<T>;
       };
   meta?:
     | T
@@ -2069,6 +2198,63 @@ export interface Layout29Select<T extends boolean = true> {
         id?: T;
       };
   media?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Gallery1_select".
+ */
+export interface Gallery1Select<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        url?: T;
+        id?: T;
+      };
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ShowroomPreview_select".
+ */
+export interface ShowroomPreviewSelect<T extends boolean = true> {
+  link?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Contact1_select".
+ */
+export interface Contact1Select<T extends boolean = true> {
+  tagline?: T;
+  heading?: T;
+  description?: T;
+  button?:
+    | T
+    | {
+        title?: T;
+      };
   id?: T;
   blockName?: T;
 }
