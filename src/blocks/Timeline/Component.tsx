@@ -29,16 +29,16 @@ export const Timeline17: React.FC<Timeline17Props> = ({ tagline, heading, subhea
 
         {/* Timeline */}
         <div className="relative flex flex-col md:flex-row">
-          <div className="absolute top-1.5 left-0 z-10 hidden h-1 w-16 bg-gradient-to-r text-accent from-background-primary to-transparent md:block" />
+          <div className="absolute top-1.5 left-0 z-10 hidden h-1 w-16 bg-gradient-to-r text-headingDark from-background-primary to-transparent md:block" />
 
           <div className="flex flex-col md:flex-row">
             {steps?.map((step, index) => (
               <div key={index} className="relative flex gap-4 md:flex-col md:gap-0">
                 {/* Timeline Line & Dot */}
                 <div className="flex flex-col items-center md:mb-4 md:w-full md:flex-row">
-                  <div className="h-2 w-[3px] bg-accent md:h-[3px] md:w-full" />
+                  <div className="h-2 w-[3px] bg-headingDark md:h-[3px] md:w-full" />
                   <div className="z-20 size-[0.9375rem] flex-none rounded-full bg-accent shadow-[0_0_0_8px_white]" />
-                  <div className="h-full w-[3px] bg-accent md:h-[3px] md:w-full" />
+                  <div className="h-full w-[3px] bg-headingDark md:h-[3px] md:w-full" />
                 </div>
 
                 {/* Step Content */}

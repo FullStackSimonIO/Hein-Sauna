@@ -1,3 +1,4 @@
+import BlurText from '@/components/BlurText'
 import { ExpandableRichText } from '@/components/ExpandableRichText'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'

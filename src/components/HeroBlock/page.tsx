@@ -21,8 +21,13 @@ const HeroBlock: React.FC<HeroBlockProps> = ({ name, richText, image }) => {
         </div>
       )}
       <div className="relative z-10 px-4 md:px-8 lg:px-16 text-white max-w-3xl">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">{name}</h1>
-        {richText && <RichText className="prose prose-invert mx-auto" data={richText} />}
+        <h1 className=" md:text-6xl font-bold mb-4 lg:text-10xl">{name}</h1>
+        {richText && (
+          <RichText
+            className="prose prose-invert mx-auto text-paragraph font-semibold"
+            data={richText}
+          />
+        )}
       </div>
     </section>
   )

@@ -6,8 +6,9 @@ import { Page } from '@/payload-types'
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Volume2, VolumeX } from 'lucide-react'
-import { FadeIn } from '@/components/Animations/FadeIn'
+
 import { Parallax } from '@/components/Animations/ParallaxScroll'
+import ShinyText from '@/components/ShinyText'
 
 export const Header5: React.FC<Page['hero']> = ({ title, richText, links, media }) => {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -26,11 +27,10 @@ export const Header5: React.FC<Page['hero']> = ({ title, richText, links, media 
         <div className="container">
           <div className="flex flex-col justify-center items-center text-center max-h-[60rem] min-h-screen py-16 md:py-24 lg:py-28">
             <div className="w-full max-w-xl">
-              <FadeIn>
-                <h1 className="mb-5 text-6xl font-bold text-heading md:mb-6 md:text-9xl lg:text-11xl">
-                  {title}
-                </h1>
-              </FadeIn>
+              <h1 className="mb-5 text-6xl font-bold text-heading md:mb-6 md:text-9xl lg:text-11xl">
+                <ShinyText text={title} />
+              </h1>
+
               {richText && (
                 <RichText className="mb-6 text-paragraph" data={richText} enableGutter={false} />
               )}

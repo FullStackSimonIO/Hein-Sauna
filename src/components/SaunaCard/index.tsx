@@ -5,6 +5,7 @@ import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
 import type { Sauna } from '@/payload-types'
+import { ExpandableRichText } from '../ExpandableRichText'
 
 export type SaunaCardProps = Pick<
   Sauna,

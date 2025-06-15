@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 import type { Accessory } from '@/payload-types'
+import { motion } from 'framer-motion'
 
 type AccessoryCardProps = {
   accessory: Accessory
@@ -24,8 +25,39 @@ const AccessoryCard: React.FC<AccessoryCardProps> = ({ accessory }) => {
       <div className="flex flex-col h-full bg-white">
         {/* Bild */}
         <div className="relative w-full h-64 md:h-72 lg:h-80 overflow-hidden">
-          {image && <Media resource={image} fill className="object-cover w-full h-full" />}
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
+          <motion.div
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            className="
+                relative w-full overflow-hidden
+                h-48         /* Mobile: 12rem */
+                md:h-80      /* ab md: 20rem */
+                lg:h-[24rem] /* ab lg: 36rem */
+              "
+          >
+            {image && (
+              <motion.div
+                className="absolute inset-0"
+                variants={{
+                  rest: { scale: 1 },
+                  hover: { scale: 1.1 },
+                }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <Media resource={image} fill className="object-cover w-full h-full" />
+              </motion.div>
+            )}
+            {/* dunkles Overlay */}
+            <motion.div
+              className="absolute inset-0 bg-black/40"
+              variants={{
+                rest: { opacity: 0 },
+                hover: { opacity: 1 },
+              }}
+              transition={{ duration: 0.3 }}
+            />
+          </motion.div>
         </div>
 
         {/* Textbereich: flex-grow sorgt dafür, dass alle Cards die gleiche Höhe haben */}

@@ -19,6 +19,7 @@ import { getServerSideURL } from './utilities/getURL'
 import Messages from './collections/Messages'
 import Saunas from './collections/Saunas'
 import { Accessories } from './collections/Accessories'
+import NewsletterSubscribers from './collections/NewsletterSubscribers'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -130,7 +131,17 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URL || '',
     },
   }),
-  collections: [Pages, Saunas, Accessories, Messages, Posts, Media, Categories, Users],
+  collections: [
+    Pages,
+    Saunas,
+    Accessories,
+    Messages,
+    Posts,
+    Media,
+    NewsletterSubscribers,
+    Categories,
+    Users,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [

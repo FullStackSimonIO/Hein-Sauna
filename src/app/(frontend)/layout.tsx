@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 
 import React from 'react'
-import { Footer } from '@/Footer/Component'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import '../globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
@@ -11,6 +10,7 @@ import { Banner } from '@/components/Banner'
 import { oleoScriptSwash } from '@/fonts/fonts'
 
 import { Header } from '@/Header/Component'
+import { FooterServer } from '@/Footer/Footer'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -21,12 +21,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
-      <body className={`${oleoScriptSwash.variable} `}>
+      <body className={``}>
         <SmoothScroll>
           <Banner />
           <Header />
           {children}
-          <Footer />
+          <FooterServer />
         </SmoothScroll>
       </body>
     </html>

@@ -13,6 +13,7 @@ const config = {
     './src/**/*.{ts,tsx}',
     './src/**/*.{js,ts,jsx,tsx}',
     './payload.config.ts',
+    './src/emails/**/*.{js,ts,jsx,tsx}', // render-time
   ],
   presets: [relumePreset],
   fontFamily: {
@@ -89,6 +90,14 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        loopTestimonials: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        // Utility-Klasse: "animate-loop-testimonials"
+        'loop-testimonials': 'loopTestimonials 60s linear infinite',
       },
       typography: () => ({
         DEFAULT: {

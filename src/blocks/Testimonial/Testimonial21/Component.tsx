@@ -28,10 +28,13 @@ export const Testimonial21: React.FC<Testimonial21Props> = ({
         </h1>
         {richText && <RichText className="text-paragraphDark" data={richText} />}
       </div>
-      <div className="flex animate-loop-testimonials">
-        {renderTestimonials()}
-        {renderTestimonials()}
+      <div className="overflow-hidden">
+        <div className="flex min-w-[200%] animate-loop-testimonials">
+          {renderTestimonials()}
+          {renderTestimonials()}
+        </div>
       </div>
+
       {links && links?.length > 0 && (
         <div className="mt-12 flex justify-center gap-4 md:mt-16">
           {links.map(({ link }, index) => (
