@@ -32,6 +32,7 @@ import Layout29 from '@/blocks/Layout/Layout29/config'
 import Gallery1 from '@/blocks/Gallery/Gallery1/config'
 import { ShowroomPreview } from '@/blocks/ShowroomPreview/config'
 import Contact1 from '@/block-templates/Contact/Contact1/config'
+import Gallery10 from '@/blocks/Gallery/Gallery10/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -107,6 +108,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 Gallery1,
                 ShowroomPreview,
                 Contact1,
+                Gallery10,
                 /* PLOP_BLOCKS */
               ], // ! HIER DIE CONFIG DES BLOCKS IMPORTIEREN
               required: true,

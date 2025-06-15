@@ -17,6 +17,7 @@ import { Layout29 } from './Layout/Layout29/Component'
 import { Gallery1 } from './Gallery/Gallery1/Component'
 import { ShowroomPreview } from './ShowroomPreview/Component'
 import Contact1 from './Contact/Contact1/Component'
+import { Gallery10 } from './Gallery/Gallery10/Component'
 
 const blockComponents = {
   header64: Header64,
@@ -32,6 +33,7 @@ const blockComponents = {
   timeline17: Timeline17,
   layout29: Layout29,
   gallery1: Gallery1,
+  gallery10: Gallery10,
   showroomPreview: ShowroomPreview,
   contact1: Contact1,
 

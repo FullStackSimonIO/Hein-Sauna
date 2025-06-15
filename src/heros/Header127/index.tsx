@@ -24,10 +24,7 @@ export const Header127: React.FC<Page['hero']> = ({ title, richText, media = [],
                 <ul className="flex gap-4">
                   {links.map(({ link }, i) => (
                     <li key={i}>
-                      <CMSLink
-                        {...link}
-                        className="px-6 py-3 text-lg font-medium border rounded-lg bg-black text-white hover:bg-gray-800"
-                      />
+                      <CMSLink {...link} />
                     </li>
                   ))}
                 </ul>

@@ -21,6 +21,7 @@ const heroes = {
   header5: Header5,
   header9: Header9,
   header36: Header36,
+  header127: Header127,
   /*highImpact: HighImpactHero,
   lowImpact: LowImpactHero,
   mediumImpact: MediumImpactHero,
@@ -33,7 +34,7 @@ const heroes = {
   header78: Header78,
   header83: Header83,
   header104: Header104,
-  header127: Header127,*/
+  */
 }
 
 export const RenderHero: React.FC<Page['hero']> = (props) => {

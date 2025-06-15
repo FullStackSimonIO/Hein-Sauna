@@ -152,7 +152,7 @@ export interface Page {
   id: number;
   title: string;
   hero: {
-    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36';
+    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36' | 'header127';
     title: string;
     richText?: {
       root: {
@@ -283,6 +283,7 @@ export interface Page {
     | Gallery1
     | ShowroomPreview
     | Contact1
+    | Gallery10
   )[];
   meta?: {
     title?: string | null;
@@ -785,7 +786,7 @@ export interface Accessory {
   image: number | Media;
   categories: (number | Category)[];
   hero: {
-    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36';
+    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36' | 'header127';
     title: string;
     richText?: {
       root: {
@@ -1446,6 +1447,60 @@ export interface Contact1 {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Gallery10".
+ */
+export interface Gallery10 {
+  heading: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  images: {
+    image: number | Media;
+    url?: string | null;
+    id?: string | null;
+  }[];
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gallery10';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "saunas".
  */
 export interface Sauna {
@@ -1511,7 +1566,7 @@ export interface Sauna {
     };
   };
   hero: {
-    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36';
+    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36' | 'header127';
     title: string;
     richText?: {
       root: {
@@ -1921,6 +1976,7 @@ export interface PagesSelect<T extends boolean = true> {
         gallery1?: T | Gallery1Select<T>;
         showroomPreview?: T | ShowroomPreviewSelect<T>;
         contact1?: T | Contact1Select<T>;
+        gallery10?: T | Gallery10Select<T>;
       };
   meta?:
     | T
@@ -2274,6 +2330,38 @@ export interface Contact1Select<T extends boolean = true> {
     | T
     | {
         title?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Gallery10_select".
+ */
+export interface Gallery10Select<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        url?: T;
+        id?: T;
+      };
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
       };
   id?: T;
   blockName?: T;

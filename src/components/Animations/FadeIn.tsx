@@ -10,7 +10,7 @@ type Props = {
   duration?: number
 }
 
-export const FadeIn: React.FC<Props> = ({ children, delay = 0.1, duration = 0.4 }) => {
+export const FadeIn: React.FC<Props> = ({ children, delay = 0.5, duration = 1 }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,

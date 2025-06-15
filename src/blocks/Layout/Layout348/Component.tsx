@@ -7,6 +7,8 @@ import RichText from '@/components/RichText'
 import type { Layout348 as Layout348Props } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Badge } from '@/components/ui/badge'
+import { FlyInFromRight } from '@/components/Animations/FlyInFromRight'
+import { FlyInFromLeft } from '@/components/Animations/FlyInFromLeft'
 
 export const Layout348: React.FC<Layout348Props> = ({ contents }) => {
   const [activeSection, setActiveSection] = useState(0)
@@ -37,10 +39,12 @@ export const Layout348: React.FC<Layout348Props> = ({ contents }) => {
                 })}
               >
                 {content.media && typeof content.media === 'object' && (
-                  <Media
-                    imgClassName="w-full object-cover overflow-hidden rounded-lg shadow-lg"
-                    resource={content.media}
-                  />
+                  <FlyInFromLeft>
+                    <Media
+                      imgClassName="w-full object-cover overflow-hidden rounded-lg shadow-lg"
+                      resource={content.media}
+                    />
+                  </FlyInFromLeft>
                 )}
               </div>
             ))}
