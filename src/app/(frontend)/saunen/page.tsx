@@ -78,7 +78,7 @@ export default async function Page({
             uvp={s.uvp}
             price={s.price}
             discount={s.discount}
-            ctaLink={s.ctaLink}
+            categorySlug="saunen"
           />
         ))}
       </section>
