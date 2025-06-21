@@ -5,6 +5,7 @@ import configPromise from '@payload-config'
 import { RenderHero } from '@/heros/RenderHero'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
+import { RenderSaunaBlocks } from '@/blocks/RenderSaunaBlocks'
 
 type Args = {
   params: Promise<{
@@ -20,7 +21,7 @@ async function Page({ params: paramsPromise }: Args) {
   const payload = await getPayload({ config: configPromise })
 
   const saunaResult = await payload.find({
-    collection: 'saunas',
+    collection: 'saunen',
     limit: 1,
     pagination: false,
     depth: 2,
@@ -32,8 +33,7 @@ async function Page({ params: paramsPromise }: Args) {
   return (
     <article className="pb-24">
       <PayloadRedirects disableNotFound url={`/saunen/${categorySlug}/${saunaSlug}`} />
-      <RenderHero {...sauna.hero} />
-      <RenderBlocks blocks={sauna.layout ?? []} />
+      <RenderSaunaBlocks blocks={sauna.layout ?? []} />
     </article>
   )
 }

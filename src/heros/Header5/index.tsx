@@ -31,9 +31,7 @@ export const Header5: React.FC<Page['hero']> = ({ title, richText, links, media 
                 <ShinyText text={title} />
               </h1>
 
-              {richText && (
-                <RichText className="mb-6 text-paragraph" data={richText} enableGutter={false} />
-              )}
+              {richText && <RichText className="mb-6 text-paragraph" data={richText} />}
 
               <div className="mt-6 flex flex-wrap justify-center gap-4 md:mt-8">
                 {Array.isArray(links) && links.length > 0 && (

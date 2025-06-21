@@ -15,9 +15,15 @@ import { populatePublishedAt } from '@/hooks/populatePublishedAt'
 import { revalidateDelete, revalidatePage } from './hooks/revalidateSauba'
 import { generatePreviewPath } from '@/utilities/generatePreviewPath'
 import { Archive } from '@/block-templates/ArchiveBlock/config'
+import { Layout1 } from '@/blocks/Layout/Layout1/config'
+import Layout209 from '@/blocks/Layout/Layout209/config'
+import SaunaCarouselBlock from '@/blocks/Gallery/SaunaCarouselBlock/config'
+import AccessoryPreviews from '@/blocks/AccessoriesPreview/config'
+import FAQ1 from '@/blocks/FAQ/FAQ1/config'
+import Contact1 from '@/blocks/Contact/Contact1/config'
 
-export const Saunas: CollectionConfig<'saunas'> = {
-  slug: 'saunas',
+export const Saunen: CollectionConfig<'saunen'> = {
+  slug: 'saunen',
   labels: {
     singular: 'Sauna Modell',
     plural: 'Sauna Modelle',
@@ -39,14 +45,14 @@ export const Saunas: CollectionConfig<'saunas'> = {
       url: ({ data, req }) =>
         generatePreviewPath({
           slug: typeof data?.slug === 'string' ? data.slug : '',
-          collection: 'pages',
+          collection: 'saunen',
           req,
         }),
     },
     preview: (data, { req }) =>
       generatePreviewPath({
         slug: typeof data?.slug === 'string' ? data.slug : '',
-        collection: 'pages',
+        collection: 'saunen',
         req,
       }),
   },
@@ -161,7 +167,7 @@ export const Saunas: CollectionConfig<'saunas'> = {
             {
               name: 'reference',
               type: 'relationship',
-              relationTo: ['pages', 'saunas'],
+              relationTo: ['pages', 'saunen'],
               required: true,
               admin: {
                 condition: (_, siblingData) => siblingData?.type === 'reference',
@@ -184,7 +190,6 @@ export const Saunas: CollectionConfig<'saunas'> = {
     {
       type: 'tabs',
       tabs: [
-        { label: 'Hero', fields: [saunaHero] },
         {
           label: 'Blöcke',
           fields: [
@@ -192,7 +197,14 @@ export const Saunas: CollectionConfig<'saunas'> = {
               name: 'layout',
               type: 'blocks',
               required: false,
-              blocks: [Archive /*, weitere Blocks hier*/],
+              blocks: [
+                Layout1,
+                Layout209,
+                SaunaCarouselBlock,
+                AccessoryPreviews,
+                FAQ1,
+                Contact1 /*, weitere Blocks hier*/,
+              ],
               admin: { initCollapsed: true },
             },
           ],
@@ -227,4 +239,4 @@ export const Saunas: CollectionConfig<'saunas'> = {
   ],
 }
 
-export default Saunas
+export default Saunen

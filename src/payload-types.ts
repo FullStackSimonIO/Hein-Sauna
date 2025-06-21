@@ -67,7 +67,7 @@ export interface Config {
   blocks: {};
   collections: {
     pages: Page;
-    saunas: Sauna;
+    saunen: Saunen;
     accessories: Accessory;
     messages: Message;
     posts: Post;
@@ -85,7 +85,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
-    saunas: SaunasSelect<false> | SaunasSelect<true>;
+    saunen: SaunenSelect<false> | SaunenSelect<true>;
     accessories: AccessoriesSelect<false> | AccessoriesSelect<true>;
     messages: MessagesSelect<false> | MessagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
@@ -1501,9 +1501,9 @@ export interface Gallery10 {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "saunas".
+ * via the `definition` "saunen".
  */
-export interface Sauna {
+export interface Saunen {
   id: number;
   name: string;
   slug?: string | null;
@@ -1559,15 +1559,140 @@ export interface Sauna {
             value: number | Page;
           } | null)
         | ({
-            relationTo: 'saunas';
-            value: number | Sauna;
+            relationTo: 'saunen';
+            value: number | Saunen;
           } | null);
       url?: string | null;
     };
   };
-  hero: {
-    type: 'none' | 'header1' | 'header5' | 'header9' | 'header36' | 'header127';
-    title: string;
+  layout?:
+    | (
+        | Layout1
+        | Layout209
+        | SaunaCarouselBlock
+        | {
+            title?: string | null;
+            /**
+             * Optionaler Text oberhalb der Produkt-Kacheln
+             */
+            intro?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            /**
+             * Diese Produkte werden als Kacheln angezeigt
+             */
+            accessories?:
+              | {
+                  accessory: number | Accessory;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'accessoryPreviews';
+          }
+        | FAQ1
+        | Contact1
+      )[]
+    | null;
+  title?: string | null;
+  /**
+   * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+   */
+  image?: (number | null) | Media;
+  description?: string | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Layout1".
+ */
+export interface Layout1 {
+  tagline?: string | null;
+  title: string;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  media?: (number | null) | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'layout1';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Layout209".
+ */
+export interface Layout209 {
+  heading: string;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  image: number | Media;
+  listItems: {
+    icon?: (number | null) | Media;
     richText?: {
       root: {
         type: string;
@@ -1583,48 +1708,43 @@ export interface Sauna {
       };
       [k: string]: unknown;
     } | null;
-    links?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'pages';
-                  value: number | Page;
-                } | null)
-              | ({
-                  relationTo: 'posts';
-                  value: number | Post;
-                } | null);
-            url?: string | null;
-            label: string;
-            /**
-             * Choose how the link should be rendered.
-             */
-            appearance?: ('default' | 'outline') | null;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'layout209';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SaunaCarouselBlock".
+ */
+export interface SaunaCarouselBlock {
+  heading?: string | null;
+  images?:
+    | {
+        image: number | Media;
+        imageTitle?: string | null;
+        imageDescription?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
           };
-          id?: string | null;
-        }[]
-      | null;
-    media?:
-      | {
-          image: number | Media;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  layout?: ArchiveBlock[] | null;
-  title?: string | null;
-  /**
-   * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-   */
-  image?: (number | null) | Media;
-  description?: string | null;
-  publishedAt?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'saunaCarousel';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1813,8 +1933,8 @@ export interface PayloadLockedDocument {
         value: number | Page;
       } | null)
     | ({
-        relationTo: 'saunas';
-        value: number | Sauna;
+        relationTo: 'saunen';
+        value: number | Saunen;
       } | null)
     | ({
         relationTo: 'accessories';
@@ -2368,9 +2488,9 @@ export interface Gallery10Select<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "saunas_select".
+ * via the `definition` "saunen_select".
  */
-export interface SaunasSelect<T extends boolean = true> {
+export interface SaunenSelect<T extends boolean = true> {
   name?: T;
   slug?: T;
   slugLock?: T;
@@ -2392,38 +2512,28 @@ export interface SaunasSelect<T extends boolean = true> {
               url?: T;
             };
       };
-  hero?:
-    | T
-    | {
-        type?: T;
-        title?: T;
-        richText?: T;
-        links?:
-          | T
-          | {
-              link?:
-                | T
-                | {
-                    type?: T;
-                    newTab?: T;
-                    reference?: T;
-                    url?: T;
-                    label?: T;
-                    appearance?: T;
-                  };
-              id?: T;
-            };
-        media?:
-          | T
-          | {
-              image?: T;
-              id?: T;
-            };
-      };
   layout?:
     | T
     | {
-        archive?: T | ArchiveBlockSelect<T>;
+        layout1?: T | Layout1Select<T>;
+        layout209?: T | Layout209Select<T>;
+        saunaCarousel?: T | SaunaCarouselBlockSelect<T>;
+        accessoryPreviews?:
+          | T
+          | {
+              title?: T;
+              intro?: T;
+              accessories?:
+                | T
+                | {
+                    accessory?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        faq1?: T | FAQ1Select<T>;
+        contact1?: T | Contact1Select<T>;
       };
   title?: T;
   image?: T;
@@ -2432,6 +2542,68 @@ export interface SaunasSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Layout1_select".
+ */
+export interface Layout1Select<T extends boolean = true> {
+  tagline?: T;
+  title?: T;
+  richText?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  media?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Layout209_select".
+ */
+export interface Layout209Select<T extends boolean = true> {
+  heading?: T;
+  richText?: T;
+  image?: T;
+  listItems?:
+    | T
+    | {
+        icon?: T;
+        richText?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SaunaCarouselBlock_select".
+ */
+export interface SaunaCarouselBlockSelect<T extends boolean = true> {
+  heading?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        imageTitle?: T;
+        imageDescription?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -3000,8 +3172,8 @@ export interface TaskSchedulePublish {
           value: number | Page;
         } | null)
       | ({
-          relationTo: 'saunas';
-          value: number | Sauna;
+          relationTo: 'saunen';
+          value: number | Saunen;
         } | null)
       | ({
           relationTo: 'accessories';

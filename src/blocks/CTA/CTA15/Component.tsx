@@ -20,7 +20,7 @@ export const CTA15: React.FC<CTA15Props> = ({ title, richText, links, media }) =
               )}
               <div className="mt-6 flex flex-wrap gap-4 md:mt-8">
                 {Array.isArray(links) && links.length > 0 && (
-                  <ul className="flex justify-center gap-4">
+                  <ul className="flex justify-center flex-col md:flex-row gap-4">
                     {links &&
                       links.map(({ link }, i) => (
                         <li key={i}>

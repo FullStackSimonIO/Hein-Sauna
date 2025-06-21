@@ -37,7 +37,7 @@ export default async function Page({
 
   // 2) Alle Saunen dieser Kategorie laden
   const saunaResult = await payload.find({
-    collection: 'saunas',
+    collection: 'saunen',
     draft: false,
     overrideAccess: false,
     pagination: false,
@@ -57,7 +57,7 @@ export default async function Page({
     },
   })
 
-  const saunas = saunaResult.docs
+  const saunen = saunaResult.docs
 
   return (
     <>
@@ -68,7 +68,7 @@ export default async function Page({
       />
 
       <section className="px-4 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {saunas.map((s) => (
+        {saunen.map((s) => (
           <SaunaCard
             key={s.slug}
             name={s.name}

@@ -30,7 +30,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   // 4) Saunen dieser Kategorie holen
   const saunasResult = await payload.find({
-    collection: 'saunas',
+    collection: 'saunen',
     pagination: false,
     where: { category: { equals: category.id } },
   })

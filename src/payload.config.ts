@@ -17,9 +17,10 @@ import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
 import Messages from './collections/Messages'
-import Saunas from './collections/Saunas'
+
 import { Accessories } from './collections/Accessories'
 import NewsletterSubscribers from './collections/NewsletterSubscribers'
+import { Saunen } from './collections/Saunen'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -133,7 +134,7 @@ export default buildConfig({
   }),
   collections: [
     Pages,
-    Saunas,
+    Saunen,
     Accessories,
     Messages,
     Posts,

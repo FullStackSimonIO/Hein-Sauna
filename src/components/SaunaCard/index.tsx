@@ -5,10 +5,10 @@ import React from 'react'
 import Link from 'next/link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
-import type { Sauna } from '@/payload-types'
+import { Saunen } from '@/payload-types'
 
 export type SaunaCardProps = Pick<
-  Sauna,
+  Saunen,
   'name' | 'slug' | 'previewImage' | 'previewDescription' | 'uvp' | 'price' | 'discount'
 > & {
   categorySlug: string
