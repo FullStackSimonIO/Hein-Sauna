@@ -12,13 +12,16 @@ import { HiOutlineCalculator } from 'react-icons/hi2'
 import type { Header as HeaderType } from '@/payload-types'
 import { FaTimes } from 'react-icons/fa'
 import { CMSLink } from '@/components/Link'
+import { usePathname } from 'next/navigation'
 
 export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const isMobile = useMediaQuery('(max-width: 991px)')
   const scrollDirection = useScrollDirection()
   const menuRef = useRef<HTMLDivElement | null>(null)
+  const pathname = usePathname()
 
+  // 1) Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (isMobileMenuOpen && menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -28,6 +31,13 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [isMobileMenuOpen])
+
+  // 2) Close menu on route change
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false)
+    }
+  }, [pathname])
 
   const normalizeLink = (link: any) => ({
     ...link,
@@ -44,15 +54,13 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
       transition={{ duration: 0.3 }}
     >
       <div className="container mx-auto flex items-center justify-between px-6 py-3 lg:px-12">
-        <div className="">
-          <Link href="/" className="flex items-center gap-3">
-            {data.logo && (
-              <div className="relative w-[160px] h-[40px]">
-                <Media resource={data.logo} fill imgClassName="object-contain" />
-              </div>
-            )}
-          </Link>
-        </div>
+        <Link href="/" className="flex items-center gap-3">
+          {data.logo && (
+            <div className="relative w-[160px] h-[40px]">
+              <Media resource={data.logo} fill imgClassName="object-contain" />
+            </div>
+          )}
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-6">
@@ -62,8 +70,10 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
               <CMSLink
                 key={i}
                 {...fixed}
-                className="relative text-sm tracking-wide font-medium text-paragraphDark px-2 py-1 transition-all duration-300 ease-in-out hover:text-accent focus:text-accent group"
-              />
+                className="relative text-sm tracking-wide font-medium text-headingDark px-2 py-1 transition-all duration-300 ease-in-out hover:text-accent focus:text-accent group"
+              >
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full" />
+              </CMSLink>
             )
           })}
 
@@ -73,7 +83,7 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
               return (
                 <CMSLink
                   {...fixedCta}
-                  className="ml-4 px-5 py-2 rounded-full bg-primary text-paragraphDark font-medium hover:bg-primary/90 transition-all"
+                  className="ml-4 px-5 py-2 rounded-full bg-primary text-headingDark font-medium hover:bg-primary/90 transition-all"
                 >
                   {data.ctaButton.label || 'Angebot anfordern'}
                 </CMSLink>
@@ -118,21 +128,16 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
             {data.logo && (
               <div className="flex justify-center mb-8 mt-4">
                 <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Media resource={data.logo} className="w-[250px] h-auto" />
+                  <Media resource={data.logo} className="w-[140px] h-auto" />
                 </Link>
               </div>
             )}
 
-            <div className="flex h-screen flex-col items-center justify-center space-y-6 text-center mb-10">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center mb-10">
               {data.navItems?.map(({ link }, i) => {
                 const fixed = normalizeLink(link)
                 return (
-                  <CMSLink
-                    key={i}
-                    {...fixed}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-headingDark text-lg font-medium"
-                  />
+                  <CMSLink key={i} {...fixed} className="text-headingDark text-lg font-medium" />
                 )
               })}
             </div>
@@ -145,8 +150,7 @@ export const HeaderClient: React.FC<{ data: HeaderType }> = ({ data }) => {
                   return (
                     <CMSLink
                       {...fixedCta}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="w-full h-screen block text-center items-center justify-center rounded-full border-2 border-primary px-6 py-3 text-primary font-semibold hover:bg-primary hover:text-white transition-all"
+                      className="w-full block text-center rounded-full border-2 border-primary px-6 py-3 text-headingDark font-semibold hover:bg-primary hover:text-white transition-all"
                     >
                       {data.ctaButton.label || 'Jetzt Angebot anfordern'}
                     </CMSLink>
