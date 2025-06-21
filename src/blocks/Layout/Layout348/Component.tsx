@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
@@ -12,17 +12,27 @@ import { FlyInFromLeft } from '@/components/Animations/FlyInFromLeft'
 
 export const Layout348: React.FC<Layout348Props> = ({ contents }) => {
   const [activeSection, setActiveSection] = useState(0)
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sectionHeight = window.innerHeight
-      const currentScrollPosition = window.scrollY + sectionHeight / 2
-      const currentSection = Math.floor(currentScrollPosition / sectionHeight)
-      setActiveSection(currentSection)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute('data-index'))
+          // wenn mehr als die Hälfte der Section im Viewport ist, aktivieren
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            setActiveSection(index)
+          }
+        })
+      },
+      {
+        threshold: [0.5], // 50% Sichtbarkeit
+      },
+    )
+
+    sectionRefs.current.forEach((el) => el && observer.observe(el))
+    return () => observer.disconnect()
+  }, [contents])
 
   return (
     <section id="layout-348" className="px-[5%]">
@@ -38,11 +48,11 @@ export const Layout348: React.FC<Layout348Props> = ({ contents }) => {
                   'opacity-0': activeSection !== index,
                 })}
               >
-                {content.media && typeof content.media === 'object' && (
+                {content.media && (
                   <FlyInFromLeft>
                     <Media
-                      imgClassName="w-full object-cover overflow-hidden rounded-lg shadow-lg"
                       resource={content.media}
+                      imgClassName="w-full object-cover overflow-hidden rounded-lg shadow-lg"
                     />
                   </FlyInFromLeft>
                 )}
@@ -53,19 +63,29 @@ export const Layout348: React.FC<Layout348Props> = ({ contents }) => {
           {/* Content Section */}
           <div className="grid grid-cols-1 gap-12 md:block">
             {contents.map((content, index) => (
-              <div key={index} className="flex flex-col items-start justify-center md:h-screen">
-                {/* Text Section */}
+              <div
+                key={index}
+                ref={(el) => {
+                  sectionRefs.current[index] = el
+                }}
+                data-index={index}
+                className="flex flex-col items-start justify-center md:h-screen"
+              >
+                {/* Tagline */}
                 <Badge className="font-semibold mb-3 md:mb-4 bg-accent text-background">
                   {content.tagline}
                 </Badge>
 
-                <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-headingDark">
+                {/* Heading */}
+                <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-headingDark">
                   {content.heading}
                 </h2>
+
+                {/* RichText */}
                 {content.description && <RichText data={content.description} />}
 
-                {/* Buttons */}
-                {content.links && Array.isArray(content.links) && (
+                {/* Links */}
+                {content.links && (
                   <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
                     {content.links.map(({ link }, i) => (
                       <CMSLink key={i} size="lg" {...link} />
@@ -75,22 +95,22 @@ export const Layout348: React.FC<Layout348Props> = ({ contents }) => {
 
                 {/* Mobile Media */}
                 <div className="mt-10 block w-full md:hidden">
-                  {content.media && typeof content.media === 'object' && (
+                  {content.media && (
                     <Media
-                      imgClassName="w-full object-cover rounded-lg shadow-lg overflow-hidden rounded-2xl"
                       resource={content.media}
                       fill
+                      imgClassName="w-full object-cover rounded-lg shadow-lg"
                     />
                   )}
                 </div>
 
-                {/* Background Transition */}
+                {/* Background Transition (optional) */}
                 <div
                   className={clsx(
                     'fixed inset-0 -z-10 bg-background transition-opacity duration-300',
                     {
-                      'opacity-100': activeSection === 0 || activeSection === 2,
-                      'opacity-0': activeSection !== 0 && activeSection !== 2,
+                      'opacity-100': activeSection === index,
+                      'opacity-0': activeSection !== index,
                     },
                   )}
                 />
