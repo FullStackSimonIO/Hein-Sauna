@@ -39,7 +39,7 @@ export async function POST(req: Request) {
     })
 
     // ► E-Mail rendern & versenden
-    const confirmUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/newsletter/confirm?token=${confirmationToken}`
+    const confirmUrl = `${process.env.NEXT_PUBLIC_PAYLOAD_URL}/api/newsletter/confirm?token=${confirmationToken}`
     const element = React.createElement(ConfirmNewsletterEmail, { confirmUrl })
     const html = await render(element)
 
