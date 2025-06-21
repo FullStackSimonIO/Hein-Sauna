@@ -16,11 +16,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { Archive } from '@/block-templates/ArchiveBlock/config'
-import Header64 from '@/block-templates/Header/Header64/config'
-import CategoryPreviews from '@/blocks/CategoryPreview/config'
-import Testimonial21 from '@/blocks/Testimonial/Testimonial21/config'
-import CTA1 from '@/block-templates/CTA/CTA1/config'
+
 import {
   FixedToolbarFeature,
   HeadingFeature,
@@ -28,6 +24,12 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 import { revalidateDelete, revalidatePage } from '../Pages/hooks/revalidatePage'
+import { Layout1 } from '@/blocks/Layout/Layout1/config'
+import Layout209 from '@/blocks/Layout/Layout209/config'
+import SaunaCarouselBlock from '@/blocks/Gallery/SaunaCarouselBlock/config'
+import AccessoryPreviews from '@/blocks/AccessoriesPreview/config'
+import FAQ1 from '@/blocks/FAQ/FAQ1/config'
+import Contact1 from '@/blocks/Contact/Contact1/config'
 
 export const Accessories: CollectionConfig<'accessories'> = {
   slug: 'accessories',
@@ -131,21 +133,17 @@ export const Accessories: CollectionConfig<'accessories'> = {
       type: 'tabs',
       tabs: [
         {
-          fields: [hero],
-          label: 'Hero',
-        },
-        {
           fields: [
             {
               name: 'layout',
               type: 'blocks',
               blocks: [
-                Archive,
-                Header64,
-                CategoryPreviews,
-                Testimonial21,
-                CTA1,
-                /* PLOP_BLOCKS */
+                Layout1,
+                Layout209,
+                SaunaCarouselBlock,
+                AccessoryPreviews,
+                FAQ1,
+                Contact1 /*, weitere Blocks hier*/,
               ], // ! HIER DIE CONFIG DES BLOCKS IMPORTIEREN
               required: true,
               admin: {
