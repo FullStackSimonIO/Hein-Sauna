@@ -20,12 +20,18 @@ const nextConfig = {
       },
     ]
   },
+
   eslint: {
     // hier z.B.:
     //    ignoreDuringBuilds: true,
     dirs: ['app', 'components', 'lib'],
   },
   images: {
+    domains: [
+      'hein-sauna-git-main-fullstacksimonios-projects.vercel.app',
+      'hein-sauna.vercel.app',
+      'hein-sauna.de',
+    ],
     remotePatterns: [
       ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
         const url = new URL(item)

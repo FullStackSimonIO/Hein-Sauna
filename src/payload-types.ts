@@ -284,6 +284,7 @@ export interface Page {
     | ShowroomPreview
     | Contact1
     | Gallery10
+    | Blog35
   )[];
   meta?: {
     title?: string | null;
@@ -1578,6 +1579,45 @@ export interface Gallery10 {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Blog35".
+ */
+export interface Blog35 {
+  heading?: string | null;
+  subheading?: string | null;
+  categoryLabel?: string | null;
+  maxItems?: number | null;
+  posts?: (number | Post)[] | null;
+  buttonLabel?: string | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'blogPreview';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "saunen".
  */
 export interface Saunen {
@@ -2046,6 +2086,7 @@ export interface PagesSelect<T extends boolean = true> {
         showroomPreview?: T | ShowroomPreviewSelect<T>;
         contact1?: T | Contact1Select<T>;
         gallery10?: T | Gallery10Select<T>;
+        blogPreview?: T | Blog35Select<T>;
       };
   meta?:
     | T
@@ -2417,6 +2458,35 @@ export interface Gallery10Select<T extends boolean = true> {
         url?: T;
         id?: T;
       };
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Blog35_select".
+ */
+export interface Blog35Select<T extends boolean = true> {
+  heading?: T;
+  subheading?: T;
+  categoryLabel?: T;
+  maxItems?: T;
+  posts?: T;
+  buttonLabel?: T;
   links?:
     | T
     | {
@@ -3109,6 +3179,52 @@ export interface TaskSchedulePublish {
     user?: (number | null) | User;
   };
   output?: unknown;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BannerBlock".
+ */
+export interface BannerBlock {
+  style: 'info' | 'warning' | 'error' | 'success';
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'banner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CodeBlock".
+ */
+export interface CodeBlock {
+  language?: ('typescript' | 'javascript' | 'css') | null;
+  code: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'code';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MediaBlock".
+ */
+export interface MediaBlock {
+  media: number | Media;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mediaBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

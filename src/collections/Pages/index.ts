@@ -33,6 +33,7 @@ import Gallery1 from '@/blocks/Gallery/Gallery1/config'
 import { ShowroomPreview } from '@/blocks/ShowroomPreview/config'
 import Contact1 from '@/block-templates/Contact/Contact1/config'
 import Gallery10 from '@/blocks/Gallery/Gallery10/config'
+import { BlogPreview } from '@/blocks/BlogPreview/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -109,6 +110,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 ShowroomPreview,
                 Contact1,
                 Gallery10,
+                BlogPreview,
                 /* PLOP_BLOCKS */
               ], // ! HIER DIE CONFIG DES BLOCKS IMPORTIEREN
               required: true,

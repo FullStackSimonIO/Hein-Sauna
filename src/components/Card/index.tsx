@@ -1,12 +1,11 @@
 'use client'
+
 import { cn } from '@/utilities/ui'
 import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
 import React, { Fragment } from 'react'
-
-import type { Post } from '@/payload-types'
-
 import { Media } from '@/components/Media'
+import type { Post } from '@/payload-types'
 
 export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
 
@@ -23,61 +22,60 @@ export const Card: React.FC<{
 
   const { slug, categories, meta, title } = doc || {}
   const { description, image: metaImage } = meta || {}
-
-  const hasCategories = categories && Array.isArray(categories) && categories.length > 0
+  const hasCategories = categories && categories.length > 0
   const titleToUse = titleFromProps || title
-  const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
   const href = `/${relationTo}/${slug}`
 
   return (
     <article
       className={cn(
-        'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
+        'rounded-2xl overflow-hidden bg-background shadow-sm border border-border hover:shadow-lg transition-shadow duration-300 group',
         className,
       )}
       ref={card.ref}
     >
-      <div className="relative w-full ">
-        {!metaImage && <div className="">No image</div>}
-        {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
+      <div className="relative w-full aspect-[3/2] bg-muted">
+        {metaImage && typeof metaImage !== 'string' ? (
+          <Media resource={metaImage} className="h-full w-full object-cover" />
+        ) : (
+          <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
+            No image
+          </div>
+        )}
       </div>
-      <div className="p-4">
+
+      <div className="p-6">
         {showCategories && hasCategories && (
-          <div className="uppercase text-sm mb-4">
-            {showCategories && hasCategories && (
-              <div>
-                {categories?.map((category, index) => {
-                  if (typeof category === 'object') {
-                    const { name: titleFromCategory } = category
-
-                    const categoryTitle = titleFromCategory || 'Untitled category'
-
-                    const isLast = index === categories.length - 1
-
-                    return (
-                      <Fragment key={index}>
-                        {categoryTitle}
-                        {!isLast && <Fragment>, &nbsp;</Fragment>}
-                      </Fragment>
-                    )
-                  }
-
-                  return null
-                })}
-              </div>
-            )}
+          <div className="mb-3 flex flex-wrap gap-2">
+            {categories.map((category, index) => {
+              if (typeof category === 'object') {
+                return (
+                  <span
+                    key={index}
+                    className="bg-accent text-accent-foreground text-xs font-medium px-2 py-1 rounded-full"
+                  >
+                    {category.name || 'Kategorie'}
+                  </span>
+                )
+              }
+              return null
+            })}
           </div>
         )}
+
         {titleToUse && (
-          <div className="prose">
-            <h3>
-              <Link className="not-prose" href={href} ref={link.ref}>
-                {titleToUse}
-              </Link>
-            </h3>
-          </div>
+          <h3 className="text-xl font-semibold leading-snug text-foreground group-hover:text-accent transition-colors">
+            <Link href={href} ref={link.ref} className="no-underline">
+              {titleToUse}
+            </Link>
+          </h3>
         )}
-        {description && <div className="mt-2">{description && <p>{sanitizedDescription}</p>}</div>}
+
+        {description && (
+          <p className="mt-2 text-muted-foreground text-sm leading-relaxed line-clamp-3">
+            {description.replace(/\s/g, ' ')}
+          </p>
+        )}
       </div>
     </article>
   )

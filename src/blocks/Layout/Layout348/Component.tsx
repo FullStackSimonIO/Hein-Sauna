@@ -96,11 +96,16 @@ export const Layout348: React.FC<Layout348Props> = ({ contents }) => {
                 {/* Mobile Media */}
                 <div className="mt-10 block w-full md:hidden">
                   {content.media && (
-                    <Media
-                      resource={content.media}
-                      fill
-                      imgClassName="w-full object-cover rounded-lg shadow-lg"
-                    />
+                    <div className="mt-10 block w-full md:hidden">
+                      {/* hier geben wir eine fixe Höhe auf Mobile (h-64 ≈ 16:9) */}
+                      <div className="relative w-full h-64 overflow-hidden rounded-2xl">
+                        <Media
+                          resource={content.media}
+                          fill
+                          imgClassName="object-cover w-full h-full"
+                        />
+                      </div>
+                    </div>
                   )}
                 </div>
 

@@ -23,8 +23,8 @@ export const Header1: React.FC<Page['hero']> = ({ links, media, richText, title 
   // console.log('Header links:', links)
 
   return (
-    <section id="hero-section" className="relative px-[5%] py-16 md:py-24 lg:py-28">
-      <div className="container">
+    <section id="hero-section" className="relative px-[5%] py-16 md:py-24 lg:py-28 ">
+      <div>
         <div className="grid grid-cols-1 gap-x-20 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
           {/* Text-Column */}
           <div>
@@ -69,7 +69,7 @@ export const Header1: React.FC<Page['hero']> = ({ links, media, richText, title 
           </div>
         </div>
       </div>
-      <AnimateScrollIcon className="absolute bottom-4 left-1/2 transform -translate-x-1/2" />
+      <AnimateScrollIcon className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden md:block" />
     </section>
   )
 }
