@@ -5,6 +5,7 @@ import { Input, Label, Textarea, Checkbox, Button } from '@relume_io/relume-ui'
 import RichText from '@/components/RichText'
 import type { Contact1 as Contact1Props } from '@/payload-types'
 import { Badge } from '@/components/ui/badge'
+import { toast } from 'sonner'
 
 export const Contact1: React.FC<Contact1Props> = ({ tagline, heading, description, button }) => {
   const [formData, setFormData] = useState({
@@ -41,10 +42,14 @@ export const Contact1: React.FC<Contact1Props> = ({ tagline, heading, descriptio
         throw new Error(text || 'Server-Fehler')
       }
       setStatus('success')
+      toast.success('Danke, wir melden uns schnellstmöglich!', {
+        description: 'Wir haben deine Nachricht erhalten und melden uns in Kürze bei dir.',
+      })
       setFormData({ name: '', email: '', message: '', acceptTerms: false })
     } catch (err: any) {
       setStatus('error')
-      setErrorMessage(err.message || 'Beim Senden ist ein Fehler aufgetreten.')
+      setErrorMessage(err.message || 'Fehler beim Senden. Bitte versuche es später.')
+      toast.error('Ups, etwas ist schiefgelaufen.')
     }
   }
 
@@ -109,15 +114,15 @@ export const Contact1: React.FC<Contact1Props> = ({ tagline, heading, descriptio
           {/* Datenschutz */}
           <div className="flex items-center space-x-2 text-sm">
             <Checkbox
-              className="text-paragraphDark focus:text-accent"
               id="terms"
               checked={formData.acceptTerms}
               onCheckedChange={handleCheckboxChange}
+              className="data-[state=checked]:bg-accent data-[state=checked]:border-accent text-accent"
             />
             <Label htmlFor="terms">
               Ich akzeptiere die{' '}
               <a
-                href="/datenschutz"
+                href="/datenschutzrichtlinie"
                 target="_blank"
                 rel="noreferrer"
                 className="underline text-accent font-semibold"
@@ -126,39 +131,44 @@ export const Contact1: React.FC<Contact1Props> = ({ tagline, heading, descriptio
               </a>
             </Label>
           </div>
-          {/* Senden */}
+          {/* Submit */}
           <div className="text-center">
-            <Button type="submit" disabled={status === 'loading'} className="relative text-accent">
+            <Button
+              type="submit"
+              disabled={status === 'loading'}
+              className={`
+                relative inline-flex items-center justify-center px-8 py-3 border-2 border-accent 
+                text-accent font-medium rounded-lg overflow-hidden transition-colors duration-300
+                ${status !== 'loading' ? 'hover:bg-accent hover:text-white' : ''}
+              `}
+            >
               {status === 'loading' && (
-                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <svg
-                    className="h-5 w-5 animate-spin"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25 stroke-current"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75 fill-current"
-                      d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z"
-                    />
-                  </svg>
-                </span>
+                <svg
+                  className="absolute left-4 h-5 w-5 animate-spin text-accent"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    className="opacity-25"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z"
+                    className="opacity-75"
+                  />
+                </svg>
               )}
-              {status === 'loading' ? 'Sende…' : button?.title}
+              <span className="relative">
+                {status === 'loading' ? 'Senden…' : button?.title || 'Senden'}
+              </span>
             </Button>
             {status === 'error' && <p className="mt-2 text-sm text-red-600">{errorMessage}</p>}
-            {status === 'success' && (
-              <p className="mt-2 text-sm text-green-600">
-                Deine Nachricht wurde erfolgreich versendet!
-              </p>
-            )}
           </div>
         </form>
       </div>

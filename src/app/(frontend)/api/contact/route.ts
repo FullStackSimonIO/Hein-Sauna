@@ -36,7 +36,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: 'info@fullstack-factory.de'!, // z.B. '"Deine Seite" <no-reply@deinedomain.de>'
-      to: 's.edholzer@gmail.com'!, // z.B. 'kontakt@deinedomain.de'
+      to: 'info@bayernmakler24.de'!, // z.B. 'kontakt@deinedomain.de'
       subject: 'Neue Kontaktanfrage über deine Website',
       react: await ContactFormEmail({ name, email, message, acceptTerms }), // JSX-Template
     })

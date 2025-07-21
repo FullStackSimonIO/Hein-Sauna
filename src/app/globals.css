@@ -150,3 +150,58 @@
 .hover-underline:hover::after {
   width: 100%;
 }
+
+/* Luxury font styles for hero sections */
+@layer utilities {
+  .font-luxury-heading {
+    font-family: var(--font-luxury-heading), var(--font-heading), serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  .font-luxury-body {
+    font-family: var(--font-luxury-body), var(--font-paragraph), sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.015em;
+  }
+
+  .text-shadow-luxury {
+    text-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.3),
+      0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .shadow-luxury {
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+
+  .animation-pause {
+    animation-play-state: paused;
+  }
+}
+
+/* Enhanced testimonial animations */
+@keyframes loop-testimonials-luxury {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-loop-testimonials-luxury {
+  animation: loop-testimonials-luxury 60s linear infinite;
+  transition: animation-play-state 0.3s ease;
+}
+
+.animate-loop-testimonials-luxury:hover {
+  animation-play-state: paused;
+}
